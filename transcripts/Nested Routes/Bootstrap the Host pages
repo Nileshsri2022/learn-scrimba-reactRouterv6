@@ -1,0 +1,130 @@
+
+Transcript
+0:00
+Okay.
+0:00
+Before we can dive into actually doing the nesting that we want to do, we're going to bootstrap out some of the pages that we need.
+0:06
+And so that's going to be one of your first tasks.
+0:09
+First of all, I want you to add a host link to the nav bar.
+0:12
+It should be before the about and vans just over here to the left.
+0:16
+And when it gets clicked, it should take you to the slash host path.
+0:19
+And of course that won't happen until we set up the rest of this, but I want you to also create the following components that we see here: dashboard, income, and reviews.
+0:28
+I've organized things a little bit.
+0:29
+I moved our van detail and vans pages into a dedicated vans folder.
+0:34
+So I've also created this host folder.
+0:36
+Currently it's empty and so you'll need to add these components there.
+0:40
+I've also included the routes here just in case you wanted a quick reference to them.
+0:44
+I also pulled up the slide here in case for some reason this is better for visualizing it.
+0:48
+And keep in mind I don't need you to build the pages right now.
+0:51
+I just want you to have maybe an h one that says like post dashboard here.
+0:55
+And then once you have those components ready you'll need to import them and you'll set up the routes for each of those.
+1:00
+Now because we're just bootstrapping things I don't want you to worry yet about doing any kind of nesting.
+1:05
+You can just put everything as additional routes here right on the same level as these other ones.
+1:11
+Alright, now it's your turn to get your hands on the keyboard.
+1:13
+Pause now and work on the challenge.
+1:21
+Alright, let's get this done.
+1:22
+So we'll first go to our header which is where our links are.
+1:26
+We'll add another one that will take us to slash host host.
+1:31
+Awesome.
+1:31
+Okay.
+1:32
+Easy start.
+1:32
+If I go there, nothing's gonna show up because we don't have any route that matches that.
+1:37
+And oh, no.
+1:38
+I broke it.
+1:40
+Okay there we go we're back.
+1:41
+Okay that's nice uh quick easy win we'll get rid of that.
+1:45
+Okay let's create some components dashboard income, and reviews.
+1:50
+I won't bore you by making you watch me do all of this.
+1:54
+So I just created a basic dashboard component and I'm going to do the exact same thing.
+1:59
+In fact, I'm just going to copy this and paste it to some new components for the income and the reviews.
+2:05
+Okay.
+2:05
+So now we have the income and reviews done.
+2:07
+Let's go to our index here and we will import those.
+2:13
+We'll bring in the dashboard.
+2:15
+This is going to be in the host folder and it's the dashboard component and then we'll just do that for the other two.
+2:24
+Okay, so challenge part number two is done and next we need to set up our routes.
+2:30
+So I'm just going to take this vans route and let's see we need one two three of them so we'll change vans to oh this is well that's okay.
+2:41
+We'll change it to host and then I'm going to change this to the dashboard.
+2:44
+I guess I could call this host dashboard or something if I wanted to be extra clear.
+2:48
+And then this will be slash host slash income, that will be the income component, and slash host slash reviews, and that will be the reviews component.
+2:59
+Okay.
+2:59
+Let's hit save.
+3:00
+We're not broken.
+3:00
+That's good news.
+3:01
+I'm gonna go to the host and we'll see dashboard goes here.
+3:04
+That's good.
+3:05
+Now currently we don't have any kind of navigation that will be able to take us to the income and reviews routes so I'm just going to type it up here into the URL.
+3:14
+We'll hit enter.
+3:16
+Okay.
+3:16
+Income page goes here.
+3:18
+We'll do slash reviews.
+3:19
+Reviews page goes here.
+3:20
+Awesome.
+3:21
+Okay, that was all just some bootstrapping work.
+3:23
+Nothing too groundbreaking.
+3:24
+But next we're going to see how we can actually on our host page have another navigation bar that will allow us to be a little more deeply nested so that we can navigate just through the different host pages.
+3:36
+If anything that we did in this bootstrapping challenge here was difficult then that's probably a good sign that it's time to go back just review what you've learned.
+3:45
+Maybe it's been a little while since you've done it, but it really will be in your best interest to review what we've learned up until this point, and try to catch yourself up.
+3:53
+So without further ado, let's start turning this into some more nested routes.
