@@ -1,0 +1,110 @@
+
+Transcript
+0:00
+The way React Router works under the hood is when it is looking at a child route like the ones we have here and here, and technically this one here as well.
+0:09
+Inside of the context of that route, it knows that this route is a child of the slash host route.
+0:14
+Up until now, we've included a slash at the beginning of every one of our paths, but the truth is we don't need to do that all the time.
+0:21
+And in fact, it's going to end up making our lives a lot easier to not have to have an absolute path like this every time that gives us the complete view of the path from the very home page at slash all the way to the end.
+0:33
+That might not seem like a huge deal here when we just have kind of two portions of our URL or of our path, But if we look back at one of the pages we're going to be creating, we have slash host slash vans slash the ID of the van slash pricing and slash photos.
+0:48
+And that is going to start to get tedious.
+0:51
+Plus, if this were to grow into a much bigger site, that might even get more and more and more nested and just become a little bit unmaintainable.
+0:58
+Fortunately, there is a better way.
+0:59
+And like I mentioned before for anybody who already knows a thing or two about React Router, we can clean up what we have here and make it better.
+1:07
+And the way we're going to make it better is through the use of relative routes.
+1:10
+Now fair warning, by switching switching things to relative routes, it is going to lead us into the next topic because we're gonna break a thing or two here.
+1:15
+But that's okay.
+1:15
+That's how progress is made, right?
+1:19
+The idea behind this is that the slash really should mean and should be dedicated for the very initial home page.
+1:25
+If I start my path with a slash, then React Router is going to treat it like an absolute path.
+1:30
+And technically, as we've seen, I can use that and I could just use that for the foreseeable future for my entire app, and things would work.
+1:37
+If I do not use a slash at the beginning, then it treats it as a relative route.
+1:42
+And what is it relative to?
+1:44
+Well, it's relative to its parent route.
+1:46
+In this case, the parent route is not really determined.
+1:50
+We have this path of slash, which is our home page, and the parent has no path.
+1:54
+It's called a pathless route because, well, there's no path there.
+1:57
+So it assumes because there is no parent that this is one of the first pages, like the first section of the URL here slash about slash vans slash fan slash ID.
+2:07
+So I can do the same thing with my host here and just remove my slash, and maybe we decide we get a little carried away and we're going to just remove all of these initial slashes.
+2:17
+Well, let's hit save and see what happens.
+2:19
+Okay I'm at the slash host route but suddenly my dashboard is gone.
+2:23
+But here it says that the host is the path.
+2:26
+Well what's happening is because I don't have a slash here it is now relative to the parent route, and the parent route is at slash host.
+2:34
+It doesn't say slash but that's because it's on the top level of our routes.
+2:38
+So think for a second.
+2:39
+If this host is relative to the parent, and the parent is host, what could I type into my navigation here, my URL, in order to get to the dashboard view?
+2:48
+You can pause now and kind of play around with that or think about it if you want.
+2:55
+Well, what I'd have to type in is slash host slash host.
+2:58
+Hit enter, and now I'm back to my dashboard.
+3:01
+So that's not ideal.
+3:02
+I go to income, well that route doesn't even exist anymore, and you can see actually none of it is matching because really we're defining slash host slash host slash income, and now we're back to where we wanted to be.
+3:15
+Of course we set up these links as absolute paths to slash host slash income slash host slash reviews, and so that's taking us to this unmatched blank page, which we should actually put on our backlog because we probably want some kind of four zero four not found page to really soak up any routes that are not being matched in our route definitions over here.
+3:34
+But that's for a future lesson.
+3:36
+Let's go back.
+3:37
+Okay.
+3:37
+Well, how could I fix this?
+3:38
+Well, if these routes are relative to the parent, then I don't need to specify host again.
+3:43
+I can just say this is the path of income, this is the path of reviews, because in the context of these nested routes it already knows that the parent is host slash host.
+3:53
+So that should fix income and reviews.
+3:56
+Let's hit save.
+3:56
+We'll go to income, and awesome.
+3:58
+Our income page is back.
+3:59
+Reviews page is back.
+4:01
+The dashboard is still broken.
+4:02
+Now at this point there's a couple small caveats that I want to talk about, and I think that will probably be best served by doing it in the next lesson.
+4:09
+So before just moving on, if you want you can play around with everything we've done here.
+4:13
+You can scrub back to the beginning of the video and see if you can recreate this relative path setup that I have here.
+4:19
+And when you're ready, let's go to the next lesson.
+4:21
+We'll learn how to fix dashboard and a couple other minor things as well.
