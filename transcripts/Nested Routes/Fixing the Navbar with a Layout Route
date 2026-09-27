@@ -1,0 +1,106 @@
+
+Transcript
+0:00
+The first thing that I'd like to do to get our feet wet with this nested routing idea is to really fix what we have going on with our header.
+0:07
+Right now we stuffed our header into our browser router just because it was outside of our routes, which means that it will display on every page.
+0:16
+However this really doesn't feel clean to me.
+0:18
+In fact if we had a header that was more complex, maybe it would take up fifty lines of code.
+0:23
+It It feels like a weird place to just stuff it into our browser router like this.
+0:28
+I guess we could abstract it to a header component and then it would just say header, but still it doesn't feel good to me to put something that's unrelated to our routes inside of our browser router like this.
+0:38
+So our introduction to nested routes is going to be through something called a layout route.
+0:43
+And I wanted to remind you that the primary reason we are nesting our routes is so that we can hit this second bullet point here when you want to keep displaying some information or some UI on the page, but you also want to display more stuff.
+0:55
+That's exactly what we're doing with our nav bar.
+0:57
+We're keeping our navbar on the page, and I think our design has a footer too.
+1:01
+Yeah, we've got a footer that we haven't implemented yet, but that would also be something that would just be on every page.
+1:07
+But we also want the changing of our URL to display other things as well.
+1:12
+So I added another slide to the end of this presentation.
+1:15
+Let's bump forward a little bit.
+1:16
+This is an image taken from the documentation for React Router.
+1:20
+It's specifically the spot that talks about layout routes.
+1:22
+You can click the image you see here to go to the
+1:33
+see if you haven't done React Router before, but it honestly has great information there.
+1:37
+You might need to read it a couple times to make it stick.
+1:40
+So feel free to pause and go look at the documentation if you'd like, but I'm going to be talking about these layout routes.
+1:47
+The idea of a layout route is that it doesn't have a path of its own per se, but instead its purpose is to lay out your page.
+1:56
+We know that we want every one of our pages to have a header and a footer.
+2:00
+If you go to that documentation, one of the things that they'll mention is how the concept of a route can be a little bit stretched, I guess, because in the case of a layout route you don't necessarily need to have a path.
+2:12
+If you look really closely, it's a little bit small in this image, but it says this is a bad example, and it says danger, basically don't do this.
+2:19
+What they talk about is how if I didn't want my header here inside my browser router, but I did want it to wrap all of my pages.
+2:26
+Without using what we're about to talk about with layout routes, I would have to do something like take my home component and maybe wrap it in a fragment or a div and then start stuffing in all my header code just right here.
+2:38
+And I would have to repeat that for every one of the elements that I want to have my header, and I would have to do that with my footer as well.
+2:44
+This is obviously not a good example.
+2:47
+Like it says in the documentation, don't do this, there's a much better way, and that is by using a layout route.
+2:52
+So let me back this up to a reasonable spot.
+2:55
+Now we do have a little bit of work before we throw the layout route together, so I'm actually going to make a challenge.
+3:01
+I'm gonna give you the chance to do this hard work for me, and then we will actually implement the layout route in the next scrim.
+3:07
+So let me type up a challenge for you.
+3:08
+Okay, I'm sorry this is a bit administrative, but I want you to create a new folder called Components.
+3:14
+It's going to sit as a sibling to our Assets and our Pages folders, so not nested inside of them.
+3:20
+And in that components folder, I want you to create two new component files, layout dot JSX and header dot JSX.
+3:27
+And then you will simply move the header code here into the header dot JSX file, but I don't want you to necessarily go beyond that because we will actually not end up importing it here and using it at all inside of our index file.
+3:40
+So pause now and work on this challenge.
+3:48
+Gosh, you know, I wish there were a way that I could just steal the code that you just wrote and use it in my recording here, but alas that's not exactly how it works.
+3:56
+So I will be doing this work.
+3:57
+Let's go ahead and create a new folder called components, and inside I will create those two new files, header and layout.
+4:06
+And then we will just steal our header from the index page.
+4:10
+We can actually just cut it.
+4:12
+We're going to lose our header for a little while.
+4:14
+So in the header we'll import React and we'll create our file or rather our function and we will return the header that we just copied.
+4:28
+Alright.
+4:28
+Let's hit refresh there.
+4:30
+And okay.
+4:31
+So yeah, our header is gone, which is a little bit inconvenient because we can't navigate our site anymore, but that's okay.
+4:36
+We're gonna fix that soon.
+4:37
+Actually, we're gonna fix that now because we've done the
+4:44
+implement this layout component so that we don't have to repeat ourselves by putting the header on every one of the elements that we're rendering at every path.
