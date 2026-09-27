@@ -1,0 +1,76 @@
+
+Transcript
+0:00
+Okay.
+0:00
+We're gonna start this app from the almost bare bones.
+0:03
+We have a very basic React project here.
+0:06
+You can see that all we really have is a simple hello world.
+0:09
+There's one thing I do want to point out and that's something that I haven't really talked much about before and you might have noticed it real quick over here in the index dot HTML.
+0:17
+You'll see that our script tag is pointing to index dot JSX.
+0:21
+When you're working in a React project, you can specify any files that have React components in them, specifically ones that are using the JSX syntax, as having a dot JSX extension.
+0:33
+Now under the hood in Scrimba, we've made it so that it's using Vite in order to compile the language if you were to download this onto your local machine and run it.
+0:42
+Vite expects any components you make in the JSX syntax are using the dot JSX file extension.
+0:48
+Now here on Scrimba, it's going to work just fine if you decide to make these as dot JS files, but I did want to introduce you to that in case you had never seen it before.
+0:56
+So throughout this section and this project, we are going to be using JSX files when there's a React component involved.
+1:03
+Okay, let's move on to React router setup.
+1:05
+You can see I have React and React DOM included as dependencies.
+1:08
+I need to include another module called react router dom, and that's react dash router dash dom.
+1:16
+So I'll add that here.
+1:17
+You can see the current version is 6.4.3.
+1:21
+Now for a little extra information, React Router DOM six point four introduced a whole new set of tools that you can use in React Router.
+1:29
+I'm planning on touching on those new additions to six point four a bit later in the course.
+1:34
+However, in this section I'm only going to be focusing on the basics that come with version six.
+1:40
+We will not be going into the data layer APIs that come with six point four.
+1:44
+Okay, let's start out with the most basic thing.
+1:47
+In order to set our project up as a single page application with routing using React Router, we need to import a few things.
+1:54
+And in this screencast the only thing we're going to be worried about is importing something called browser router, and that comes from React Router DOM.
+2:04
+Now we just learned about context recently in this course, so I think this will be interesting to you.
+2:09
+What BrowserRouter is doing under the hood is it is a context provider.
+2:13
+And so in order to give our app the power to include routing in its functionality, we need to wrap our entire app with this browser router.
+2:23
+So I'm going to put browser router around the app like this.
+2:28
+We'll hit save and nothing much should have changed.
+2:31
+We should still get our hello world text right there.
+2:34
+But by simply adding browser router, we now have a whole suite of tools that come with React Router DOM that we can use to control our app.
+2:42
+Now just in case you see this in the wild, sometimes people will rename BrowserRouter since it's a bit of a mouthful.
+2:48
+And so they'll import BrowserRouter but then rename it to something like router.
+2:52
+Now we're also going to be seeing that there is a routes component and a route component, so I'm not going to rename it as router because those are all very similar.
+3:02
+So we'll just call it browser router for now.
+3:05
+Awesome.
+3:05
+This is a great start.
+3:06
+Like I mentioned, there's a few other components we're going to be importing, so that's what we'll be working on next.
