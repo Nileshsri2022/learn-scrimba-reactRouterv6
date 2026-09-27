@@ -1,0 +1,72 @@
+
+Transcript
+0:00
+Okay.
+0:00
+Let's fix this weird conundrum where we have slash host slash host, and that's where our dashboard lives.
+0:06
+We've already seen that the income and reviews are working because we do want them to be at slash host slash income and slash host slash reviews.
+0:14
+It's pretty common when you're creating a nested route scenario like we have here to put some sort of layout element at the parent of that nested route series that you're creating.
+0:24
+This layout element is of course as we've learned the one where all of the shared user interface, in our case just this simple little navigation bar, where that's going to be exposed and then everything else that matches more nested inside of it will just go into the outlet of the parent layout component.
+0:42
+Because this is a pretty common setup, in React Router there's a way for us to say, okay this is the layout element and this layout should exist on every route that starts with host or slash host.
+0:55
+But when you go there, I also have a component that I want to render in the outlet of this host layout component, and not at some further nested URL path like slash host slash host, just at slash host.
+1:08
+And the way that you do that is with something called an index route.
+1:11
+You can click this screenshot, which will take you to the React Router docs, which talks a little bit more in detail about index routes.
+1:17
+But the main takeaway to remember that was at least most helpful for me is to know that if I have an element that I want to display in the outlet of the layout component, but I want it to be at the same route as what the layout component is defined at, then I can simply replace my path with the prop called index.
+1:37
+A way that I tried to understand this for a long time was to imagine it being like path equals slash.
+1:42
+But the problem is when a path starts with a slash, it's an absolute path.
+1:46
+So doing this means that this would only display at the top level slash path up here.
+1:51
+It's like it would be the home page.
+1:53
+So the slash isn't going to work for us because that's an indicator to React Router that it's an absolute path.
+1:58
+So their workaround for that is to say index.
+2:01
+Now there's a nuanced difference between the layout route that we have here that does include a path and the layout route we have above that does not include a path.
+2:10
+In this case the layout component will apply to, well, everything, because everything is a child of that layout route.
+2:17
+And that's why we still see a navigation bar even though we're inside of our more deeply nested routes here.
+2:23
+Now in fact I could switch this definition here so that it does include a path, and the path would be path equals slash.
+2:30
+But if I do that I want you to think to yourself what tool did we just learn about that I would then have to use in order to maybe update my routes so that they looked a little bit more consistent and clean.
+2:40
+Well let me hit save.
+2:41
+Let's go to our home page and everything seems to be working just fine.
+2:45
+That's very specific because of the way that the slash works and this being an absolute path, but the point is we could also replace this path equal slash with index.
+2:54
+Because once again index is saying I want you to put this element, the home component, inside the outlet of my parent route when it matches.
+3:03
+So when the path is just slash, then first render the layout, and then inside the outlet stick in the home element.
+3:10
+When it changes to slash about, then I don't want you to render the home anymore because it's not the index anymore, it's slash about.
+3:18
+And so you should render this element inside of the outlet of the parent.
+3:22
+I think for the sake of more closely matching what the documentation shows, I'm going to leave it this way.
+3:27
+But it's helpful to point out that it was working before and it would continue to work the other way as well.
+3:32
+Okay, there's one other little caveat that you might be asking yourself about, and that's right here.
+3:37
+We have this vans path, and then we're explicitly saying vans slash colon ID.
+3:41
+So what gives with that?
+3:42
+How come we're not using nested routing there?
+3:44
+Well, that's a great question if you were asking that, and we're going to talk about it in the next lesson.
