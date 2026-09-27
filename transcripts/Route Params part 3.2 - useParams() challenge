@@ -1,0 +1,157 @@
+Transcript
+0:00
+Okay.
+0:00
+So in part two of the challenge, I want you to make a fetch request to get the data for the van that we're looking at on the van detail page based on the params dot ID that comes in.
+0:11
+We're using the Mirage JS server, fake server again to get the data And the endpoint you will make a fetch request to is slash API slash vans slash and then the ID that comes from params.
+0:24
+In this case, I'm just making this as a comment.
+0:26
+Van ID has no significant meaning or anything.
+0:29
+I'm just saying that the ID of the van needs to go at this point in the URL.
+0:33
+For now you can just console log the data.
+0:35
+We won't be worrying about designing up the page.
+0:38
+I'm just going to give you all the markup that I use for that.
+0:41
+Okay, pause now and work on this challenge.
+0:49
+Okay.
+0:49
+Let's get ourselves some room by closing the console and like we've done before we're going to use react dot useEffect to make a request when this component first loads.
+1:00
+So let's go ahead and do that.
+1:03
+Maybe down here below this text we'll do react dot useEffect.
+1:07
+The first parameter is the function, the effect function that we want to run.
+1:11
+The second parameter is the array of dependencies.
+1:14
+Now before what we did was we used an empty array of dependencies and that's because, well, the fetch request didn't rely on any other external piece of data to stay in sync with what we currently want to fetch.
+1:27
+However, this time around we do want to rerun our effect if somehow this component were still loaded but the params ID were to change.
+1:35
+In our case, this probably isn't going to happen.
+1:38
+The only way I can really think of this happening is if we had some link on this VAN detail page that links to another VAN detail page, in which case what would happen is the ID would change, but the component would not unmount and remount.
+1:52
+It would just rerun the function with a new params dot ID.
+1:57
+I suppose down the road, maybe some feature that says here's some vans that are similar to the one that you're looking at could be implemented, in which case this would make a difference.
+2:05
+If we left this as an empty array, it would not refetch when we moved to another van like van slash three instead of van slash two.
+2:14
+It wouldn't run the effect, therefore it wouldn't run the fetch, and therefore the page wouldn't change.
+2:18
+That's not a feature we're worried about now, but since we know it could happen we might as well put it in here.
+2:22
+So I'm gonna say I want you to rerun this effect if params dot ID were to ever change.
+2:28
+Okay, so then we'll do our fetch request, and we're fetching out to slash vans, no, slash API slash vans slash and then the van ID, which we're getting from params dot ID.
+2:40
+So I'm gonna use some string interpolation here, and we'll say params dot ID.
+2:45
+Then we will get the response and parse the JSON out of it.
+2:50
+Click this, res.
+2:51
+Json.
+2:52
+That returns a promise that we will also resolve that will have the data.
+2:56
+And let's just console log our data.
+2:59
+And at this point, I'll get rid of this console log.
+3:02
+And let's get rid of all the challenge text here just to clean things up a little bit.
+3:06
+We'll hit save and check our console.
+3:08
+Okay it took a second because it's doing a fetch request going out to the quote unquote database, but it pulled in the van with the ID of two.
+3:16
+In In this case we can see that there's this object that has a vans property, and that's the only thing in here and the only thing we care about.
+3:24
+And awesome, it has everything that we need.
+3:26
+At this point, all of the next steps to get this page up and running, actually looking good with the data that we need is really something that you should be very familiar with by now.
+3:36
+So once again, I'm going to snap my fingers.
+3:40
+Really all the changes that I made are instead of console logging the data, I set that data into some localized state.
+3:47
+You can see we used data dot vans because we had that vans property in the data that was coming in.
+3:52
+Up here we're initializing that state.
+3:55
+The rest of it is mostly just some markup.
+3:58
+You can see there's a little bit of conditional rendering happening here because we're initializing our van state as null.
+4:05
+If I try to access things like the image URL on null, then that's going to be a problem.
+4:10
+So what I did was conditionally render if there's a van then I rendered all the markup and if there isn't a van then we just have this h two that says loading.
+4:19
+When I refresh the page, you can see it briefly.
+4:20
+It'll say loading, and then it'll show the data.
+4:23
+Everything else is really just some styling.
+4:25
+There's nothing too special here.
+4:27
+Clicking the button at the bottom doesn't actually do anything.
+4:30
+But what's awesome about this is because we're using a dynamic parameter in the path, we can go back to vans, we can click the modest explorer, and it's going to load the data from the van with the ID of one.
+4:42
+Go back to vans and choose something like reliable red, and we have that data as a separate piece of data.
+4:48
+So once again as a quick recap, over in index we created a route parameter that was dynamic by using the colon and part of the path that we have for our route definition.
+4:58
+By using that colon we're setting it up so that React router will save whatever value gets put in the URL when this page loads into a variable called ID.
+5:07
+In the vans page we are linking to slash vans slash and then the ID of that van.
+5:13
+It's important that that matches up because when we come to the van detail page, which we're coming there because the element is set to go to the van detail page.
+5:21
+When we get to the van detail page, the very first thing we do is grab the parameters from the URL so that we can make a fetch request to then get the van with that specific ID.
+5:32
+Again, we could definitely increase the performance of this app.
+5:34
+For example, over here, instead of doing a fetch request every time this component loads or the Vans component loads, we could probably save that maybe in local storage or do some kind of caching so that it can not have to make a request across the internet first, but can just check our local cache.
+5:51
+And then because this data that's coming in has all of the information for each van, we could theoretically just grab the piece of data that we need based on the URL instead of making a
+6:07
+a intent here is to make this a very performant app.
+6:10
+And just like that, we have a majority of our app built.
+6:13
+At least the skeleton is all there.
+6:15
+There's a few little details that we still need to fill in, so that's what we'll start working on next.
+6:19
+As always though, if there's anything that was confusing about this challenge series that we just completed, I don't want you to push forward.
+6:26
+I want you to go back.
+6:27
+I want you to practice, practice, practice, practice what we've done.
+6:30
+That's going to be what helps you internalize what we've learned.
+6:32
+If this were school, you might be cramming for a test just so you could pass the test and move on, but this isn't school.
+6:38
+I want you to actually learn this stuff.
+6:40
+Of course, it's always okay to use whatever resources you have.
+6:43
+Using Google is something that even the most senior developers do every single day.
+6:47
+But getting the muscle memory by practicing this is what's going to help you truly deeply understand what's going on, at least well enough to start building your own projects.
+6:57
+So spend as much time as you need, reach out to the Scrumba community and ask any questions that you might have.
+7:03
+And then once you feel confident with the things that we've been learning, let's move on and we'll start learning some of the nuances about React Router.
