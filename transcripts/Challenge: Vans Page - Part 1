@@ -1,0 +1,59 @@
+Transcript
+0:00
+Okay.
+0:00
+The next thing we're going to do is create the vans list page and this won't really require you to do anything that you haven't learned yet.
+0:07
+So I'm going to make this into a two part challenge.
+0:10
+The first part is going to help you practice creating a new route, modifying the header, creating a new page.
+0:17
+And the second part is going to require you to use a fetch request to get some data and use a map method to map over the data.
+0:24
+All of this is kind of the introductory level React stuff that you should already know by now.
+0:29
+But let's not get too far ahead of ourselves.
+0:31
+Let's start with part one.
+0:32
+Again, your challenge is to create the vans list page that's gonna be over in the pages directory, the route, which is what will happen down here, and a link in the header so that you can actually navigate to it.
+0:44
+Now, even though this is something that you have done recently, I really want you to practice this before just skipping ahead and watching me do it.
+0:52
+However, if you get stuck, of course, we will be going over this together.
+0:55
+So pause now and work on this challenge.
+1:03
+Let's start by creating the page.
+1:05
+So I'll create a new file called vans dot JSX and we'll just do some of the regular setup stuff.
+1:15
+Nothing fancy quite yet we're going to get to that in the next challenge.
+1:18
+Then over here we need to import the VANS page.
+1:24
+We'll create a new route, so I'll just duplicate this line and change this to VANS, and this will render the VANS element.
+1:32
+And then we will link to vans, so this will lead to slash vans vans, and I think that should be it.
+1:40
+Let's hit save.
+1:42
+Okay.
+1:42
+We have our vans here.
+1:44
+And if we click it, vans page goes here.
+1:47
+Awesome.
+1:48
+Now comes the fun part.
+1:49
+In the next challenge, we are going to actually pull in our data so that we can display the actual vans and the van information.
+1:57
+However, before plowing ahead, if you did struggle with this challenge, then just revert back to the beginning of this video and try it again.
+2:04
+If you're confused about these parts, then it will be more important that you kind of drill them in before you just plow ahead.
+2:11
+Okay, getting off my soapbox.
+2:12
+Let's work on part two of the challenge.
