@@ -1,0 +1,89 @@
+Transcript
+0:00
+Let's run through a quick quiz on route parameters just to make sure that you are understanding everything we've been talking about.
+0:06
+Again, I'll remind you that this isn't school.
+0:08
+I'm not gonna be giving you a grade on this.
+0:10
+It will have no effect on how you do in this course.
+0:13
+Really, this quiz is a tool for you to assess your own understanding of what you've done.
+0:18
+As such, I recommend you don't just skip ahead if you were to struggle with any of the questions here, but rather to maybe open a separate tab, review the lesson that's associated with each of these questions, and then come back and see if you can answer them for yourself.
+0:31
+Skipping ahead and just watching me answer it will maybe help you understand it a little better, but the understanding will be so much stronger if you're able to answer it by yourself.
+0:40
+Okay, that's enough of a guilt trip.
+0:41
+Now with these quizzes on Scrimba, I do expect that you pause the screencast just like we do with any other challenge and physically type your answer down.
+0:49
+I know when you hit play it's just going to erase your answers, but that's not the point.
+0:53
+The point is to have that muscle memory that's included when you actually type on your keyboard.
+0:58
+It will really help you retain the answers that you're writing down.
+1:01
+Okay, pause now and work on answering the quiz questions.
+1:10
+Okay.
+1:10
+Number one.
+1:11
+What is a route or sometimes called a URL parameter?
+1:15
+In our route definitions, we are able to tell it exactly what we want the URL to say when a certain component is loaded, or more accurately when a certain element is loaded.
+1:25
+However, it's pretty common for us to not know ahead of time as the creators or the developers of these route definitions what the actual URL will be.
+1:34
+This is most common when you have some kind of detail page that displays specific information for one specific item in a whole group of items.
+1:43
+That sounds super specific, but if you think of basically any web app that you've been to there's probably something like this.
+1:49
+For example, any blog will probably have something like a slash blog route, but then after that you might want the detail for a specific blog entry, in which case it would be slash blog slash and then probably some kind of slug of the title of the blog.
+2:04
+Why I love React router, for example.
+2:08
+The second portion would be a route param.
+2:11
+Instead of copying and pasting our route paths a billion times every time we want to add a new blog entry, Instead, we can create a parameter inside of our route path that makes it a sort of placeholder for any part of the path that might be put in there.
+2:24
+So let me try to summarize that in an answer here.
+2:27
+This sounds a bit wordy, but I landed on a portion of our route path that is just a placeholder for what will eventually be the actual segment in the URL of the page.
+2:37
+So let me clean this up.
+2:38
+I'm already bleeding over into number two here.
+2:40
+And let's work on number two.
+2:42
+We need to add a route parameter called product ID.
+2:44
+I'm going to copy that to the path below.
+2:47
+We have a path that says slash products, but we are going to add a slash representing a new segment of our URL.
+2:54
+And then instead of just putting product ID, I'm going to put a colon in front of product ID.
+3:00
+If I just had product ID, then it would be the literal text slash product slash product ID with no deviation whatsoever in this.
+3:07
+However, with the colon, it says, by the way, this is just a placeholder for some other text that will actually be the segment in the URL of our page.
+3:17
+Okay.
+3:18
+And then for number three, we need to add some code below so that we can actually display whatever product ID gets put in the URL when it's displaying our product detail component.
+3:28
+In this case we would need to first import use params from react router dom and then we can grab the specific parameter that we want.
+3:39
+In our case there's going to be the one called product ID and that will equal a call to use params.
+3:47
+And now with product ID in tow we could say something like product ID is and then stick in our product ID.
+3:56
+Okay since this is just a markdown file we can't really save this and double check that it works, but I feel pretty confident with my syntax here.
+4:03
+And more important than the specific syntax is an understanding of the concepts behind it.
+4:07
+Once again, if you feel like you need to review these things, then now is the time to do that before we plow ahead.
+4:13
+And when you are ready, we'll keep moving forward.
