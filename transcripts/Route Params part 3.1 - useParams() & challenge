@@ -1,0 +1,116 @@
+
+Transcript
+0:00
+Let's take a second to look back at what we've done just as a reminder before we move on.
+0:04
+In our app component where we have our route definitions, we created a route that has a parameter as part of its path that's identified by the colon in front of this part of the path.
+0:16
+By putting a colon here, it tells React router that this isn't going to be the literal text colon ID, but instead there's going to be something here in its place.
+0:25
+I like to think of it as a variable inside of our path.
+0:28
+So whenever slash vans slash anything is in the URL, then it will load the van detail element here.
+0:35
+Then we set it up so that in our vans page, we link to the slash vans slash and then whatever the ID of that specific van that we clicked on in the vans page.
+0:46
+By doing that, it takes us over to slash vans slash two in this case because we clicked the van with the ID of two.
+0:52
+And our next task is to make it so that in the van detail page, it's able to grab the two out of the URL and then go and get the specific information about this one van that we're supposed to be looking at.
+1:04
+There's a bunch of different ways that we could do this, and we're going to see some optimization that we can do.
+1:09
+For example, right now if we go to the Vans page, you'll see it delays for a second because it's doing another fetch request going to get all of the VAN information.
+1:17
+So, really, we should be caching that somewhere so that we can get that information much quicker.
+1:22
+And then there's probably a better way that we can handle getting the detail information rather than always doing another get request since we have all the information when we get all the VINs in the first place.
+1:32
+The point is there's a lot of different ways to organize things to make it have better performance.
+1:36
+But for the sake of focusing on our learning with React router, we're gonna keep it simple.
+1:41
+React router provides us a tool called use params which allows us to grab any of the parameters that we have in our URL.
+1:48
+And that's a tool we will need to import.
+1:50
+So I'm going to import use params from react router dom, And inside the body of my component, I'm going to grab the params.
+1:59
+So we'll call it const params equals, and then we'll call use params.
+2:04
+And let's go ahead and just console log the params.
+2:09
+This function will run whenever the VAN detail component is mounted.
+2:13
+So I'll open up the console, we'll hit save, and cool.
+2:16
+We see that we get an object that has an ID property.
+2:20
+Now I want you to pause and think for a second, where did ID come from?
+2:27
+Remember over in our index.
+2:29
+Js after the colon we put this colon ID.
+2:32
+React router will look at any sections of the path that have a colon before it and it will add that as the key in the key value pair in the object that we get from use params.
+2:43
+So if I were to change ID to blah blah and hit save, we'll see that now our object has a key of blah blah.
+2:50
+That's too silly.
+2:51
+Let's go back to ID.
+2:52
+One really quick side note is there's nothing stopping us from having multiple params inside of our URL.
+2:58
+So I could after slash colon ID, I could add another slash and say colon, I don't know, maybe type.
+3:04
+And when I hit save, of course, this path that we currently see isn't going to match anything on here, so it's going to disappear.
+3:11
+But let's say we add to our URL slash rugged and hit enter, and now we can see the VAN detail page is back up because this path is now matching again.
+3:21
+And also the params that we're pulling in the VAN detail page and we're console logging over here is now including both the ID and the type parameter.
+3:30
+For our needs, we won't be needing multiple parameters, but I just wanted to make that clear.
+3:34
+So let's go back.
+3:35
+We'll go to well, let's hit save.
+3:38
+We'll go to vans.
+3:39
+Go back to our vans.
+3:40
+We'll do number two this time.
+3:42
+And cool, our parameters are coming through as we saw before.
+3:46
+And now I think it's a good time to get your hands on the keyboard.
+3:49
+Instead of building a whole separate app to have you get practice with this, I'm actually just going to delete what we've done and have you do it from scratch.
+3:57
+So I will write up part one of this two part challenge that we're going to do.
+4:02
+Okay.
+4:03
+This will test if you were paying attention.
+4:04
+Of course, you can rewind to see exactly what it looks like, but I want you to be the one who's writing this out.
+4:10
+So I want you to reroute what we did and I want you to console log the params object like we still see in the console from before.
+4:16
+In fact, I'll hit save and that'll disappear.
+4:18
+And now it's your turn.
+4:19
+Pause and work on this challenge.
+4:27
+So we need to first import the use params hook from react router dom, and then we will grab the params object by calling use params and then simply console log params.
+4:42
+And that needs to be lowercase.
+4:44
+Hit save.
+4:45
+And there we are, back to where we were.
+4:47
+Okay.
+4:47
+So now we're ready for part two, and this lesson's getting a little bit long, so we are going to do part two in the next scrim.
