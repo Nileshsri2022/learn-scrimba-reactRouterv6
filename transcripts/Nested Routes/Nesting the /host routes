@@ -1,0 +1,86 @@
+
+Transcript
+0:00
+Okay.
+0:00
+We are going to work on nesting these other routes inside of our slash host route, and we're just going to take it one little step at a time.
+0:08
+So your first challenge is to take this route that is for slash host and turn it into a parent route that surrounds the host income and host reviews routes.
+0:17
+Now because we don't have a navigation bar to get to these other paths here, once you've done that you'll go to the URL and you'll type slash host slash income or reviews, it doesn't matter.
+0:26
+Hit enter and see what happens.
+0:29
+Once you've done that, I want you to pause and I want you to see if you can figure out why it did what it did.
+0:33
+Okay, so pause now and work on this challenge.
+0:41
+Okay well let's simply take this closing slash away so that we can turn this into a parent route here.
+0:49
+We'll close it with a separate tag and move that down.
+0:52
+We'll indent these nested ones now.
+0:55
+Okay.
+0:55
+Let's hit save.
+0:57
+Again, we don't have any kind of navigation happening, so I'm going to type in slash income and hit enter.
+1:03
+And okay.
+1:04
+Well here we are.
+1:05
+It says we're at slash host slash income, but we're seeing that the dashboard goes here, and we're not seeing anything else.
+1:11
+So maybe you figured it out.
+1:13
+Kudos to you if you did.
+1:14
+Remember when we learned about layout routes, we learned that this route as a parent to the other routes needs to have some kind of hole inside of that layout so that React router can know where to put the route that actually matches the URL.
+1:28
+In this case, this dashboard element is acting like a layout route, and if we go to our dashboard page we don't have the outlet component here anywhere.
+1:38
+So okay, let's say we go ahead and we import the outlet component from React Router DOM.
+1:45
+And let's just do a really quick fragment so that we can add our outlet.
+1:51
+We'll hit save and look at that, we have our dashboard goes here, that's from this dashboard page, that's this h one.
+1:57
+And then we have the outlet, which is the sort of placeholder for the route that's actually matching best to go.
+2:04
+I guess the important thing to learn from this lesson is that the way React Router is working is it's matching multiple routes and deciding that multiple things can go on the page at one time.
+2:15
+In this case, this route with the path of slash host is matching, and so it's displaying the dashboard.
+2:20
+And because our dashboard has an outlet, it's also matching this route here.
+2:25
+And by matching, I just mean that it's comparing our path in this route to what's actually in the URL.
+2:31
+And because this route is matching, it's also displaying this income, and it's putting it inside the outlet from its parent route.
+2:38
+That should have been review, but maybe seeing it in this slightly different context is helping clarify that.
+2:43
+Now there's one major problem here and that is that our dashboard is actually a different view altogether.
+2:49
+It's going to have a summary of our earnings, our reviews, a quick summary of the vans that we're renting.
+2:54
+So the dashboard isn't the shared user interface that we want to share between these three routes.
+3:00
+So think for a second, what is the shared interface that we want to share between these three routes?
+3:08
+Well it's this tiny little navigation bar at the top.
+3:11
+So in reality what we need to create is another layout route that is specific to the slash host route.
+3:17
+And this layout route is still going to be nested inside of our main layout route up here because we still want the top navigation and the footer.
+3:26
+We don't have a footer, but eventually the footer to exist.
+3:29
+So in the next scrim we'll have another challenge where we create another layout route.
+3:33
+We'll call it the host layout.
+3:35
+And thankfully we'll create that little navigation so that we can actually navigate around this slash host nested routes without having to type anything in the URL.
+3:43
+So that's what's coming up next.
