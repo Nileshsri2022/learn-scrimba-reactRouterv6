@@ -1,0 +1,177 @@
+Transcript
+0:00
+Before we move on we're going to apply what we've learned so far by creating the first two pages of our van life project.
+0:07
+So your challenge is to do exactly that.
+0:10
+I do have the React Router DOM dependency already installed in this project so you don't have to worry about adding the dependency, but you'll see that I have no imports.
+0:18
+I'm not using anything with react router yet and so that's going to be your task.
+0:23
+As a part of that I want to make sure that you also include a navigation bar so that you can at least get to the home page by clicking this van life logo or the about page by clicking the about route.
+0:33
+If you want you can add a vans route but we're not going to be dealing with that quite yet.
+0:37
+As a part of that you'll notice that both the home page and the about page have the same navigation bar.
+0:43
+We haven't learned sort of the official way to handle this, but I did show you one example in a recent scrim, so I wouldn't worry too much about it.
+0:50
+If you want to copy and paste the code you use for the nav bar on the two pages, that's totally fine.
+0:55
+If you find a way to use the same code on both pages, that's fine too.
+0:59
+We're going to learn a more official way to handle that situation in an upcoming lesson.
+1:03
+Now this isn't something I'll say super often, but I do trust you to know where your strengths and your weaknesses lie.
+1:09
+If you do feel like you struggle with CSS then I would encourage you to actually do all of the CSS by yourself.
+1:16
+It's not an insignificant amount that you would be spending trying to get this designed this way, so I just wanted to give you a heads up.
+1:22
+Since I have already designed this on the side, we're not going to be spending our time actually thinking through and writing all the CSS, I'm just going to copy and paste what I already have.
+1:32
+But since this isn't school, I'm not going to be giving you a grade.
+1:35
+So if you have a weakness in CSS, then practice it, exercise it, actually do this yourself.
+1:40
+You can click on either of these screenshots which will take you to the Figma design where you can grab all of the spacing and fonts and colors and everything you need.
+1:49
+However, if you do feel pretty confident in CSS and you really are just here for the react, then I totally understand.
+1:55
+If you just want to make a bare bones white background black text page that will link you between the home and about page to practice React router specifically and not necessarily to practice the CSS.
+2:06
+So I'll leave it up to you, just do whichever will be best for your own education.
+2:11
+Okay, that's enough of an intro.
+2:12
+Pause now and work on this challenge.
+2:19
+Okay let's import some of the things that we already know we are going to need.
+2:24
+We know we need browser router, that's going to be the context provider that will set up everything with router.
+2:31
+We'll need the routes component and some routes inside using the route component.
+2:36
+The naming is a little confusing.
+2:38
+And we're going to need the link component.
+2:40
+And all of this will come from react router dom.
+2:45
+There's a few different ways that we can set this up.
+2:47
+Let me buy myself some space here.
+2:49
+We could either put all of our react router stuff here inside of app or we could put all of the react router stuff right here in the render.
+2:57
+I'm going to prefer that my app act almost like a table of contents for my react router stuff.
+3:04
+And so I'm going to render the browser router right here in my app.
+3:09
+We'll create our set of routes and inside there we will have a route.
+3:15
+We'll have two routes and these are both going to have a path and the second one is going to be about but we'll handle that in a second and then it will be rendering an element.
+3:27
+And let's have the first one do a home element.
+3:31
+The second one do an about element.
+3:33
+This will be slash about.
+3:35
+And then that is going to lead us to some errors where we don't have a home or about element.
+3:40
+So let's import those even though they don't exist yet.
+3:44
+And actually you know what I think I'm going to put all of my pages into a folder called pages.
+3:49
+So we'll say that I'm importing this from dot slash pages slash home and about.
+3:55
+Okay, that means I'm going to have to create those so we'll create a pages directory and I'll create a home dot j let's see, JSX because I'm going to use JSX in this project.
+4:09
+And we'll also create an about dot JSX.
+4:15
+Okay.
+4:16
+Import React from React.
+4:19
+Hopefully by now this has become kind of second nature, just being able to spin up a quick react component like this.
+4:27
+Let's do our classic h one that says home page and then I'm just going to copy this whole thing and put it in the about.
+4:34
+We'll change this to say about page.
+4:37
+Okay, this is good.
+4:38
+It's now displaying home page here.
+4:41
+So let's go back to index and I guess let's test to see if we have our different routes.
+4:46
+So for now, because I don't have any links, we'll have to type in slash about.
+4:50
+Okay, we got to our about page.
+4:52
+Cool.
+4:53
+Now like I mentioned in the challenge, I didn't want you to spend too much time looking into how you would include the navigation bar only because there's a sort of this designated real way to do this in React Router and we haven't learned about that yet.
+5:06
+Obviously when we have a site with a lot of different pages it's not very maintainable to copy and paste the navigation bar into every one of our pages.
+5:15
+If that's the way you solved this challenge of getting the navigation bar up there that's completely okay.
+5:19
+I specifically mentioned that that could be something that you do.
+5:22
+But one other thing we could do is before we start rendering our routes, I could stick the navigation bar right here under my browser router above my routes.
+5:31
+So that's what I'm going to do for now, but we'll be learning the real way to do this very soon.
+5:35
+So let's maybe put this all inside of a header element and that's where we will have our navigation.
+5:43
+And let's see, to be honest I'm not sure if the logo that is clickable and sent you to the home page should be a part of this nav element because it's also kind of serving as the site logo.
+5:54
+For now I think I'm going to just consider what's on the right here part of the navigation and I'll call this maybe its own link.
+6:01
+So in the nav I'm not going to use an a tag because that is not how we transition from one page to the next in react router.
+6:09
+I'm going to use a link element, but I need to import this.
+6:13
+So, oh I already did import it, okay awesome.
+6:15
+This one will lead us to the about page, I need a to prop that goes to slash about and then as part of the header but not part of this nav we'll say that we have another link.
+6:28
+This is the one that will say hashtag van life and this is going to send us to the home page or slash.
+6:35
+Okay I'm sure this isn't going to be pretty but let's see if it works.
+6:39
+That takes us home, that takes us to about.
+6:42
+Okay, now this is kind of what I was talking about.
+6:44
+The rest of our efforts would really just be into putting some content on the page and then dealing with CSS.
+6:51
+However, because we're learning about React Router I'm not going to spend our precious time making you watch me do CSS.
+6:57
+So I'm going to snap my fingers and just like that we have a project that is designed.
+7:03
+Now don't be thrown off, off.
+7:04
+This is basically what we had before just with a few changes, and I'll walk you through them so it's not so disorienting.
+7:10
+Our home page and about page, I've really just put in some CSS classes and some content.
+7:16
+Same with the about page over here.
+7:18
+One thing you can see is that I also added these images.
+7:21
+I put them inside of a folder called assets and then images, so we have the two heroes on the two pages.
+7:27
+I have some styles that I plan to use throughout like this button right here I called a link button just because it is actually a link but I wanted it to look like a button and there's a few places where that exists.
+7:38
+I think over on our home page we also have this one.
+7:41
+I think right now this might be sending to the slash vans route, yeah, but we don't have that yet, we're going to get there soon.
+7:47
+So feel free to poke around the CSS if you'd like, it's really just a hundred and forty five lines on top of what we already had so it's really not too bad.
+7:55
+So the next thing we're going to start learning about is something called nested routes.
+8:00
+So once you feel good about what we have here let's move on.
