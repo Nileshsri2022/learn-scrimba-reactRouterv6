@@ -1,0 +1,180 @@
+
+Transcript
+0:00
+Okay so we mentioned how route is a self closing element but it also can be an element that wraps around other elements.
+0:08
+And in fact when the route component does take children it needs to be other route components as its children.
+0:14
+What I mean by that is if I want to create another route up here and I want it to wrap around other elements, I can't just go ahead and start putting other things like an h one in here.
+0:24
+It needs it to be other route components as its children.
+0:28
+So I'm going to move this closing tag down here.
+0:31
+I want it to envelope or wrap around every part of my website that I want to contain my navigation bar, which is everything.
+0:39
+Now assuming that you have dealt with React children before, you might start recognizing this pattern.
+0:45
+This route component is going to essentially take whatever element we pass to it, so I can say an element and this is where we're going to put our layout component, And it's going to render the layout component and then it will also render whatever child route matches the URL that we're currently at.
+1:03
+Let's fix some of the bugs we have here.
+1:05
+First of all, we're not importing layout, so let's go ahead and import layout from our components folder slash layout.
+1:13
+And then we need to actually create that so we will get that set up.
+1:21
+Okay.
+1:21
+Easy enough.
+1:22
+This is obviously just a placeholder.
+1:24
+Now I'm gonna hit save.
+1:25
+We're gonna see what happens and then well, yeah.
+1:27
+Let's just do that.
+1:28
+I'm gonna hit save.
+1:29
+Okay.
+1:29
+It's done loading.
+1:30
+This is everything that our site is now displaying at slash fan slash two.
+1:34
+Or if I go to slash fans, also the same thing.
+1:37
+Now assuming you do have some experience using React children, I want you to think why is it that this layout component has now completely taken over our app?
+1:46
+It's the only thing being rendered here.
+1:48
+If you'd like you can pause for a minute to think about that.
+1:51
+I wouldn't necessarily try to fix it quite yet because we haven't learned what we need to learn in order to fix it.
+2:00
+If we were doing something like this, say creating a layout component or actually rendering the layout component ourselves and wrapping it around everything here like this, then we would have access to our route components inside of our layout through the children prop.
+2:17
+However, this isn't the right way to do it because React Router is not going to be able to render correctly if we do that.
+2:23
+So when we have our layout as an element that we're passing to this route definition, there's a special tool that React Router has provided us so that we can render the layout, but then also tell it exactly where to render whichever route we're currently matching on the URL.
+2:40
+For example, we're at the slash vans route right now, so it should render the layout, and then we want it to render the vans component that we're rendering here, the element that we're rendering here, or the element that we're passing to this route here.
+2:53
+So let's go over to layout and the tool that we're going to use is a component from React Router called outlet.
+3:00
+Let me have to spell it correctly.
+3:02
+So we'll import that from React Router DOM.
+3:05
+And the outlet is basically our way to create a hole in whatever our component is where the matching route that is a child of the route that we're nesting here, or the parent route like this, the Outlet creates a hole where the matching route can render.
+3:21
+This took me a long time to wrap my head around, so don't feel bad if that doesn't make sense.
+3:25
+Playing around with this is going to be the only way that it makes sense if it didn't already.
+3:29
+Let's actually implement it and then we'll go over it once again.
+3:32
+So right now I'm just rendering this h one.
+3:34
+Let's, um, maybe put some fragments around this just so we can actually render two things.
+3:40
+And below my h one, I'm going to render the outlet as a component.
+3:45
+So now I want you to think when I hit save, what is going to happen?
+3:51
+Well when I hit save I should get my h one just like it is, but then I should also get the content that is supposed to display at slash fans.
+4:01
+And sure enough there we go.
+4:02
+So this is the layout route h one up here is replacing our header so we're gonna fix that in just a second, but now we have the rest of the slash vans page rendering below.
+4:11
+So let's look at that once again.
+4:13
+Because we are nesting these routes inside of this parent route, React Router is going to notice that this route doesn't have a path, so it's always going to match whatever URL we're currently at, And it's going to render our layout component.
+4:28
+So when it renders our layout component, if we don't have some way to tell it where to put the rest of the matching child routes like we have currently slash vans.
+4:39
+So this route path is going to match and we want to render this Vans element, we need to tell React Router inside the layout component where that Vans component should go.
+4:50
+Just like the children prop works in React children where we get to tell it where the children should be rendered, so I want you to think what is going to happen if I were to switch these two?
+4:59
+I put the outlet on top and my h one on bottom.
+5:02
+You can pause if you want to think through it or if you want to run it and actually see what it does.
+5:09
+Well if I tell it that the content should be rendered first and then the h one second, I'll hit save, we'll see that my content is first, and way down at the bottom we get our this is the layout route h one.
+5:20
+Okay.
+5:20
+Now it's your time to shine.
+5:21
+Let's do a challenge.
+5:24
+I'll be a little bit vague.
+5:25
+I want you to get the header working again.
+5:27
+You'll know that it works when you can go to the top of the page.
+5:31
+You'll see our header, and you can actually navigate between the pages again.
+5:34
+Pause now and fix our header.
+5:41
+Well, everything should be set up for us.
+5:43
+I'm going to move this outlet to the bottom and then instead of using an h one I'm going to simply import our header from, and let's see, it's inside the same folder.
+5:53
+So I can just say dot slash header, and then I can render the header component.
+5:58
+And let's get rid of this challenge text.
+6:01
+We'll cross our fingers and hit save.
+6:04
+Ah, so close.
+6:05
+Over in our header, we're using the link component in a few places, and I forgot to import that.
+6:12
+Some of you were probably shouting at me about that, and I apologize.
+6:16
+So React router dom.
+6:19
+Okay.
+6:20
+Let's hit save again.
+6:21
+Awesome.
+6:21
+I'm currently at the vans page.
+6:23
+We see the list of vans.
+6:24
+I can go into the vans detail page, go back to vans, about, the Van Lamp homepage.
+6:30
+Now I know we're not working on nested routes in the URL per se quite yet, but we are definitely going to get there.
+6:36
+I think this is a great way to introduce the concept of nested routes and most importantly understanding how this outlet works.
+6:44
+If it didn't totally make sense, that's okay.
+6:46
+We're gonna get a lot of practice with it.
+6:48
+But I've been blabbing on for a while.
+6:50
+We've done a lot of good work here.
+6:51
+We've got that ugly navbar pulled out of our browser router.
+6:55
+The navbar wasn't ugly, but it felt ugly to have it here in the browser router.
+6:59
+Now if for some reason I didn't want, let's say, the about page to have access to the same navigation bar and I wanted it to be completely different, I would need to move it outside of the children of this layout route.
+7:11
+So that would just have to move down here, and then I hit save, everything's working, but when I go to about we lose our navigation bar.
+7:20
+Hopefully that jibes with your understanding of what we've been doing so far.
+7:24
+Let's put it back in there so we can actually navigate back.
+7:26
+Okay with that under our belts we're going to be bootstrapping out all of the host pages and remember there's a lot of different cool shared user interface things that we're going to have to deal with with nesting, so we will get lots of practice with what we've talked about here.
+7:39
+So when you're ready that's what we'll start working on next.
