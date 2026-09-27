@@ -1,0 +1,194 @@
+
+Transcript
+0:00
+Okay, this is the fun part of the challenge.
+0:02
+This Vans page goes here is nice and all, but we want to get the actual van showing up on the page.
+0:08
+As per usual, you can click the design screenshots here to send you to the Figma design in case you feel like spending the time to actually put the CSS together yourself.
+0:17
+But like I did before, I'm not going to necessarily make you do that.
+0:20
+I'm just going to do a magic snap of my fingers and we'll have the design already implemented for us.
+0:25
+So your challenge is written out here.
+0:27
+You're going to use the fetch API from the web and you're going to fetch API slash vans.
+0:32
+Let me put some quotes here just to make sure that that's clear that that's a string.
+0:36
+You're going to use the fetch API and you're going to fetch to slash API slash vans.
+0:41
+This might look a little strange if you're used to only doing your fetch requests to another server or another URL somewhere because usually you have something like HTTPS colon slash slash example dot com slash API slash fans.
+0:55
+But when you're fetching something on the same domain as what your site is running on then usually you only have to provide the relative path.
+1:02
+Now remember we have our kind of fake server running here with Mirage JS and you can see it says this dot namespace is API.
+1:10
+That means that all the requests are going to start with slash API and then this function here is going to handle a get request to the slash API slash vans endpoint.
+1:21
+And all it does is return all the vans.
+1:23
+Again, you don't need to understand this.
+1:25
+This is not an important part for this course, but sometimes it's nice to poke around and see an inside look.
+1:30
+And hopefully that helps make sense of why this URL or what it doesn't really look like URL, but why this URL looks a little unique.
+1:38
+So you'll kick off that request.
+1:39
+You'll need to parse that JSON and turn it into data.
+1:42
+You need to think about what React hook you would want to use to fetch the data as soon as the page loads and how you would make it so that it only fetches it the one time.
+1:51
+And actually, you know what, number three is no longer an issue so I'm just going to get rid of Now parts of this challenge are going to require you to have prior knowledge in things like how to use the fetch API and where in react you can kick off a request when the component mounts.
+2:06
+If you're feeling a little rusty on that that's completely okay.
+2:09
+I've tried to include a couple helpful resources here.
+2:11
+This is a link to the fetching data in react scrim that I taught in my introductory course.
+2:17
+And the second one is how to take an array and to map over it using the dot map method, and then how to actually display each of those as elements on the page.
+2:25
+So feel free to check out those resources, brush up on some of those topics before trying to start this challenge here.
+2:32
+Okay.
+2:32
+I think I've given you everything you need.
+2:34
+Again, if you don't necessarily feel like doing the CSS to make it all beautiful, I'm actually okay with that this time.
+2:39
+Just try to get each of the pieces of data displayed and if CSS is something that you feel rusty on or you want a little more practice with then I would encourage you to do it.
+2:48
+Okay enough of me talking.
+2:50
+Pause now and work on this challenge.
+2:57
+I think I'm actually going to do these in backwards order.
+2:59
+I'm going to start with number two and the answer to this question is to use the useEffect hook in React.
+3:05
+Now the truth is, and this is something we're going to explore later on down the road or possibly in a different course, there's a bit of a movement away from trying to do your fetch requests for the data of a component in a useEffect hook.
+3:18
+But for now let's go ahead and use a react dot useEffect.
+3:22
+This takes two parameters.
+3:24
+The first one is a function, and the second parameter is an array of dependencies.
+3:29
+In this case we have no dependencies, but it's important that I put this array here.
+3:34
+Otherwise, our effect will run every single time any state updates on our page at all.
+3:39
+Inside the body of our function we will kick off our fetch request.
+3:43
+So I'm going to say fetch slash API slash vans.
+3:46
+And again what our server is going to do, this fake server, it's going to intercept this fetch request instead of trying to actually make a fetch request out to some endpoint probably here on scrima dot com.
+3:58
+It's going to intercept it and give back fake data.
+4:01
+This fetch function, it returns a promise and so I'm going to unpack that promise which will come with a response and will turn that into a JavaScript object or just regular JavaScript by taking the JSON part out of it.
+4:17
+That returns a promise so we will resolve that promise as well and that is where we will finally have access to our data.
+4:23
+I usually just like to console log our data.
+4:25
+For one, just to make sure things are working, we haven't made any mistakes along the way, but also to see the structure of the data so we know what it's going to look like, how we're going to access all the pieces of it.
+4:35
+So let's hit save and okay well we got something console logging.
+4:39
+It looks like it's an object with a vans property.
+4:42
+Now in this case because we're choosing to kick off our request inside of a useEffect and we're only kicking that request off one time when the component first mounts, we need a place to save the data that we're pulling in just so that if anything were to change and this component got re rendered the data wouldn't just disappear.
+5:00
+And you might remember that state is a place where data can survive the re render cycle of a component.
+5:06
+So we're going to create some state.
+5:08
+Let's call it maybe vans and set vans is react dot use state.
+5:14
+I'll start this as an empty array and then instead of console logging our data we will use set vans.
+5:21
+And we don't really care what it used to be so I don't need the callback function I'm just going to set it to data and then remember there's a property called dot vans.
+5:29
+That's the one that actually has the array that we want.
+5:32
+So if I console log vans, we'll hit save and first we get an empty array.
+5:39
+That happens when the state is set as an empty array in the beginning and then it turns into our array of van information from our fake server.
+5:47
+Awesome.
+5:47
+Actually you know what, while we have this still console logging, I'm going to grab one of the objects of our vans just so we know what properties it has.
+5:56
+Let me get rid of our challenge text.
+5:59
+Instead I'm going to put in the properties of our van.
+6:03
+Okay so our van has an ID, a name, a price,
+6:09
+type.
+6:10
+So I'm going to turn our array of raw data into an array of elements that we can display on the page by using the map methods.
+6:19
+So maybe I'll call this van elements is equal to vans dot map.
+6:24
+And for each van we are going to render.
+6:27
+And you know what this is where normally we would just start creating one van element that we want to show on the page.
+6:33
+So one of these little sections here.
+6:37
+For the sake of time I'm going to paste in what I've already created since it won't provide a whole lot to this lesson or challenge to have you watch me go through each little piece like that.
+6:47
+Okay so what you can see is just a div that has the elements that we see in the tile of one of these vans.
+6:53
+And since we're doing a map it will end up being a tile for each one of the vans in our database.
+6:58
+And there's a couple class names that are not here yet.
+7:00
+Let's actually put van elements onto our page first, and then we will fix the CSS.
+7:06
+So instead of our h one that says van's page goes here, we'll have, in fact let's use a fragment just because we don't need to necessarily add a bunch of more elements.
+7:16
+And we will just put our van elements here and let's see where we end up.
+7:22
+Okay, well that's a huge picture, but we've got our picture and it's got the name of the van, the price, and this is the style or rather the type I think is what it was called.
+7:33
+Yeah type is simple.
+7:34
+And okay we have our vans.
+7:36
+Awesome.
+7:36
+Let Let me go ahead and just use the magic of editing to make this look a little nicer.
+7:43
+And just like that our CSS is applied.
+7:45
+I had forgotten that we wanted a list container and then we have our list itself just for styling purposes so I got rid of our fragment and actually put in a div so that it could have a class name.
+7:55
+And actually we're missing something from the well we're missing a few things from the design, but one that's really easy right now is this looks like maybe an h one that says explore our van options.
+8:04
+So I'm going to stuff that just right inside of our tile here.
+8:08
+We'll have our h1 that says explore our van options.
+8:12
+Hit save.
+8:13
+Okay cool, a little step closer we still have some other work to do like these buttons, the footer, and so forth, but we'll get to that.
+8:20
+Okay, man, that was a lot of work, but hopefully this is mostly just review from previous lessons that you have learned about React.
+8:27
+But this does lead us to what we're going to learn next, and that has to do with nested routes.
+8:32
+Because what I want to have happen is I want each one of these tiles to be clickable, basically anywhere on this tile, and I want clicking each one of these tiles to take me to a nested route.
+8:43
+So it will be slash vans slash, and in our case we're going to keep it simple and just use the ID of the van.
+8:49
+So slash one will send us to a detail page of this modest explorer van because that's the one with the ID of one.
+8:56
+Slash two would take us to a detail page of the Beach Bum van and so forth.
+9:01
+There's a couple fun considerations to keep in mind when we're going to do that, so that is what we're going to tackle next.
