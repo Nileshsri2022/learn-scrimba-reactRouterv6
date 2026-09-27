@@ -1,0 +1,180 @@
+
+Transcript
+0:00
+We are about to dive into what, at least for me, was one of the more complex topics about React Router, but that's okay.
+0:07
+We're going to walk through it very much step by step, and hopefully we can get to the end and you'll just completely understand it perfectly.
+0:14
+And that topic is nested routes.
+0:16
+When we're talking about nested routes, we're oftentimes talking about actually a couple different things.
+0:21
+First of all, we're talking about nesting pieces of the URL.
+0:25
+So for example, we've already seen something like this.
+0:27
+We have the slash van route and a nested route that we have is the slash van slash and then the ID or the name of the van or whatever it is you want to be in the URL.
+0:37
+But the URL is only a part of the story because when we're talking about nested routes we're also talking about some shared user interface or parts of your page that need to remain on the page when you transition from one route to a child route or a nested route.
+0:53
+And that might happen more than you think.
+0:55
+With the example with the slash van and the slash van slash ID over here we're not doing much of that.
+1:01
+Because if I come to vans, I mean we're sharing our navigation bar across the entire site, but slash vans doesn't really have any shared UI with its child route of vans and then the ID of the van, van one.
+1:15
+Even that little Explore our VAN options wasn't part of this next page, and so this page isn't really sharing any user interface, but oftentimes you will want to do that.
+1:25
+A really great visualization of this is over on the Remix website.
+1:29
+I included a link here if you wanted to see the live demo of this.
+1:33
+And the reason it's over on remix is because React router is actually now a part of the Remix package.
+1:39
+Remix is just a full stack framework for the web.
+1:42
+It uses React right now on the front end.
+1:44
+Although I think in the future they'll be supporting whatever front end framework you want to use.
+1:49
+But a major part of Remix is the way that it handles routes.
+1:52
+So here we see an example app, they call it Fakebooks, and we'll notice a few different things.
+1:57
+First of all, we're inside of a nested route here.
+1:59
+We have example dot com slash sales slash invoices and then slash the number of one of the invoices.
+2:05
+And if we break this down you'll see that example dot com is rendering everything that you see on the page.
+2:10
+That includes the navigation bar over here on the left, the logo, everything else.
+2:14
+As you might expect as you navigate with this navigation bar on on the left, it will probably go to example dot com slash maybe dashboard slash accounts.
+2:23
+We happen to be here at slash sales.
+2:25
+And so that's the next part of our URL slash sales.
+2:28
+Now we still have some shared UI here because we are maintaining the navigation bar on the left.
+2:34
+The slash sales part of this URL is going to render everything else that you see here in this teal color.
+2:40
+Now here we have yet another navigation bar.
+2:42
+Inside the sales portion of our website we have an overview of our sales, subscriptions, invoices, customers, and deposits.
+2:50
+Again, presumably if we click on overview, well that might just be the slash sales endpoint by itself, or maybe it's slash sales slash overview.
+2:57
+We click on subscriptions, that's going to be slash sales slash subscriptions.
+3:01
+We're here at invoices, so we have slash sales slash invoices.
+3:04
+This top portion is going to be a shared UI for those other routes.
+3:09
+So if we go to the next image, we see that invoices is rendering this part down here, but it's it's keeping everything from this kind of secondary navigation bar, and then of course everything from the first navigation bar still exists too.
+3:20
+Over here we have a list of invoices and presumably this is one of those invoices, in fact it's the second one here, so the last part of our URL, which is the ID, is going to be rendered in this little portion over here on the right.
+3:35
+So in this example we see not just a nesting of the portions of our URL but that those portions of the URL are mapping to nested content on our site.
+3:45
+Or another way to think of it is that there's quite a bit of shared user interface pieces on the site even if you navigate to another route.
+3:52
+So how do you actually create these nested routes?
+3:55
+Well we know about the route component, but up until now we've just been using it as a self closing component.
+4:01
+If we look at the code that we've written so far, let's go to our index page, Every one of our routes is closing itself.
+4:08
+Nothing is being nested.
+4:09
+However, we can use route as a non self closing element, or rather something that has an opening and a closing tag.
+4:16
+We're going to see exactly how that looks a little bit later, but it's one of the most crucial capabilities of the route component that allows us to nest our routes.
+4:25
+Now we talked about there being a couple different reasons to do nested routing and I would like to propose that the primary reason that you would want to do it is whenever you want to keep some of the UI on your page, but you also want to display more.
+4:39
+So you're linking to a new part of your website, but maybe that new part of your website is really just changing one small part on the page.
+4:46
+Or it could be a big part too.
+4:48
+The point is you have some things that you want to keep displaying kind of like we showed with the navigation bar or both of the navigation bars in that example, but you also want to display some new stuff too.
+4:59
+Another reason that you might want to do this is just so that you can avoid some repetition inside of your route definitions.
+5:05
+I put a little caution sign here because sometimes that may end up being more work than it's really worth in the end.
+5:11
+For example over here we have a little bit of repetition where we're saying slash vans and slash vans slash colon ID.
+5:18
+But as we mentioned we're really not sharing that much user interface.
+5:21
+Actually we're not sharing any user interface between the Vans component and the VAND detail component, and so in this case you could choose to nest or you could choose not to nest.
+5:30
+Again we're going to see what that actually looks like in a different scrim.
+5:32
+But I wanted to lay the groundwork and say that the primary reason that I would suggest you actually consider nesting routes is when you have parts of your page that you want to keep, but also that you want to display some more stuff to.
+5:44
+So this is really going to crack open our website because we have a lot of pages that we're going to build so that we can really practice with nested routing and hopefully really solidify our understanding of nested routing.
+5:54
+So let's take a quick look at what we will be adding to our site.
+5:57
+As of right now we are only consumers of our van life site.
+6:01
+We can see the list of vans, we can see the details about one van, we can click this button that does nothing to rent the van.
+6:07
+But on the other side of this equation are people who are renting out their vans.
+6:12
+So we are going to be adding an entire host section to our website.
+6:16
+Hopefully it's not too small, you'll see in the navigation bar we're adding a host link there, and going to the host route is going to render a new navigation bar that we see here.
+6:25
+That navigation bar will have a dashboard which displays kind of a quick overview of the details the van host might want to know, and also a list of the other information that the host would want to know, like a detailed view of the income.
+6:38
+Notice that it's also going to have this navigation bar that's going to be a shared user interface.
+6:43
+The reviews that their vans are receiving.
+6:46
+Again sharing the same user interface with that navigation bar.
+6:49
+And then we have this section for vans.
+6:51
+Now I'm keeping this separate because this is going to go even another level deep.
+6:55
+On the slash host slash vans route, we'll see a list of all the vans that this host is hosting on our van life website.
+7:01
+Clicking on one of those vans will take you, and again, it's got the shared interface here, but clicking on one of those is going to take you to a new page.
+7:09
+There's still some shared interface, but this time we have yet another little navigation bar down here.
+7:15
+This allows the host of this van to see the details, the pricing, and the photos for this van.
+7:20
+So the details will be kind of the default, and when you go to the pricing, it will have both of those shared user interfaces too, and then some new information that displays.
+7:29
+Same with the photos, we'll have the photos of this van down here.
+7:33
+Theoretically it would be where the host could then edit the photos.
+7:36
+So to get an overview of the routes that we'll be adding, we will have the slash host route that's going to send us to the dashboard, then we'll have slash host slash income slash hosts slash reviews, and then we'll dive into the slash host slash vans.
+7:50
+This is going to be the list page, but then we have yet another level of nesting where we'll have slash host slash vans slash the ID of the van that was clicked on in slash host slash vans.
+7:59
+And then yet again we'll go down to slash host slash vans slash ID and then slash pricing and slash photos.
+8:06
+So this one here where it just ends in slash ID, that's going to sort of default to the details page.
+8:11
+We also could choose to name this slash host slash van slash ID slash details if we really wanted to, but just making the executive decision to have that be the default view.
+8:20
+Okay.
+8:21
+That is a lot.
+8:22
+We have a lot on our plates.
+8:24
+Fortunately, kind of like before because I really want to focus this course on React router and not necessarily on making a beautiful design.
+8:32
+I will do you, the student, a solid and I will implement all of the styling and everything for you.
+8:37
+I know that's not usually my style, but I do want to stay focused here on react router.
+8:42
+And of course, that's not to say that you couldn't take the reins and actually design it yourself if that's what you wanna practice.
+8:48
+So let's center ourselves, let's take some deep breaths if you need to, and we will jump right in.
