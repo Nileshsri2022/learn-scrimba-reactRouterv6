@@ -1,0 +1,28 @@
+
+Transcript
+0:00
+Okay.
+0:00
+Before moving on, I actually want to do a very quick reorganization.
+0:04
+I didn't just want to do it behind the scenes because I was worried that you might get a little jarred by me having changed the code so quickly.
+0:10
+But right now it's, I guess, a little wonky.
+0:12
+Maybe it's just me, but I have this app function or app component that's being rendered as the home page, but I have an about component that's being rendered as the about page.
+0:22
+I feel like I'd rather keep the names a little bit different.
+0:24
+And then instead of rendering the entire browser router inside of this render method, I think what I'm gonna do is treat the app like the top level, so I'll just render app and that means I'm going to take this entire browser router, put it inside of app, and then I'll create a separate component just called home that represents the home page.
+0:45
+Then instead of rendering the app as the home page, we'll render the home component that we just made.
+0:51
+And down here, we need to render our app.
+0:54
+And maybe let's move this onto its own line.
+0:59
+Okay.
+0:59
+That feels a little better to me.
+1:01
+Let's move on.
