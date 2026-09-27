@@ -1,0 +1,280 @@
+
+Transcript
+0:00
+You know, it may not look like much, but darn it.
+0:02
+It is worth sharing.
+0:04
+So let's talk about continuous deployment using Netlify.
+0:07
+The terminology may sound complex, but I promise it's easier than it sounds.
+0:11
+In this lesson, we're going to walk through every step that you'll need to accomplish in order to get your project deployed up on Netlify and have an associated repository on GitHub.
+0:20
+But once you go through all of these steps, as you'll see at the end of this lesson, it is dead simple to update your app and have that change automatically deploy to Netlify.
+0:29
+So the idea behind continuous deployment is that as you make changes to your code, you will push those changes to GitHub, which is an online place to hold your code.
+0:38
+And when you push something to GitHub, it will automatically deploy to Netlify.
+0:42
+And Netlify, being a web host, makes it so that people around the world can access your website from their browser.
+0:49
+In the end, the idea is we will be able to have an actual URL that you could send to a friend, family member, or post in a tweet, and that person could go see the actual site that you have built and deployed.
+1:00
+Again, this will happen in three easy steps.
+1:03
+First, we're going to push our project up to GitHub.
+1:06
+Then we're going to tell Netlify which GitHub repository we want it to deploy, and it will automatically watch for changes to that repository.
+1:14
+And the truth is, it's only two steps.
+1:16
+Then you're done.
+1:17
+Now there's a few things we need to take care of before we begin.
+1:20
+And actually, I'm going to walk us through creating a Netlify account.
+1:23
+So in reality, you just need to make sure that you have a GitHub account and that you install GitHub Desktop.
+1:29
+There's a bunch of different ways to use Git and GitHub, of course.
+1:33
+I've found that for somebody first learning Git and GitHub, it's easiest just to use GitHub Desktop.
+1:39
+If you are already familiar with using git, then you don't have to do that at all.
+1:42
+You can use command line git or whatever method you feel like using.
+1:46
+So before moving on, ensure that you have a GitHub account.
+1:49
+Make sure that you have GitHub desktop installed or you are already familiar with how you're going to push your code up to GitHub.
+1:55
+So for creating a Netlify account, you can click Netlify account here, and that will take you to the account page.
+2:00
+Or you can even click this logo here, And you'll go through the steps of setting up an account just like you would anywhere else.
+2:06
+It'll ask for your email and password.
+2:09
+You can hit sign up.
+2:10
+That should send you a verification email.
+2:12
+You'll go and you'll click that link.
+2:14
+Clicking that link will take you to a sort of getting started page.
+2:18
+For me, I chose that this would be primarily used as a personal account, and I identified myself as a hobby developer.
+2:26
+I don't think it matters much what you say your first project will be.
+2:28
+I just put a personal slash portfolio site.
+2:31
+And for naming your team, because this is a completely personal account, I just put my own first name as my team name.
+2:37
+Then I hit set up and continue.
+2:39
+When we get to this page, for now, I'm going to skip this step because we're going to come back to this later.
+2:44
+That said, if you're already familiar with Git and GitHub and you've already pushed your code to GitHub, then you can skip the next number of slides.
+2:52
+And at this point, just say that you're going to import an existing project.
+2:55
+For the sake of completeness, I'm going to go through those steps and just skip this part for now.
+3:00
+So that brings us over to GitHub Desktop.
+3:02
+I'm going to open GitHub Desktop, and in the upper left, I see a drop down for adding a new repository, and I'm going to create a new repository.
+3:12
+Clicking create new repository will bring up a modal.
+3:14
+I can give it a repository name.
+3:16
+Everything else, I'm just going to leave the same.
+3:19
+And for now, I'm going to put it on my desktop, but I would recommend organizing it somewhere that you actually wanna keep it.
+3:25
+Then click create repository.
+3:27
+That will bring you to the main page for your repository that you just created.
+3:31
+And next, we need to actually put some files inside of this folder.
+3:36
+Now depending on how you're following along, this next step will look a little bit different for you.
+3:41
+I'm going to show you how you could do it directly from Scrimba.
+3:44
+In the current Scrimba interface there's a little gear icon in the lower right that you can click and choose download as zip.
+3:51
+And in fact you can do that right from this scrim here.
+3:54
+It basically has everything that we just saw where we left off in the last lesson.
+3:58
+Do be aware that in the future as the Scrimba interface changes, the location for this option to download the project as a zip may change.
+4:06
+So just search around until you can find the option to download this project as a ZIP.
+4:10
+Now that will create a ZIP file.
+4:12
+You'll have to unzip it, which will have a folder with your project files in it.
+4:16
+And because we've already created a new folder that is a git repository, I've found that the simplest thing is just to take all of the files from the project that we just downloaded from scrimba and drag them over to the new folder that we just created with GitHub Desktop.
+4:32
+Then you can take that vanlife folder and open it in Versus Code.
+4:36
+Now this next step is going to be pretty important.
+4:39
+We haven't yet run an npm install on this project.
+4:43
+As you can see, we don't have a folder called node modules, but it's pretty imperative that we don't commit our node modules along with a few other things that are really good to never commit to your GitHub repository.
+4:54
+So I would highly recommend at this point immediately before doing anything else to create a dot git ignore file.
+5:01
+In this file, each line will contain a folder or a file or some kind of naming structure that you are telling git you don't want to ever include in any commits that you make.
+5:11
+If that doesn't make a lot of sense, that's okay.
+5:13
+Just know that it's important to have a dot git ignore file and to include at least a few basic items.
+5:20
+Now if you were just following along and you downloaded this project, I did create a dot git ignore file already, mostly so that anybody who isn't downloading this can actually come in here and copy the items that I have listed here and paste them into your dot git ignore file that you just created.
+5:37
+I also made this a little bit larger so it's a bit easier to see.
+5:40
+Now that we've made a change to our project, we can go over to GitHub desktop and we will see that it is already tracking the changes that we've made, including dragging all those new files over and creating a new git ignore file manually.
+5:53
+So let's go ahead and commit these changes.
+5:55
+We can do that by adding a summary down here in the lower left.
+5:59
+I'm just saying adding files and git ignore.
+6:02
+And then I can say I want to commit these changes to the main branch.
+6:05
+So I can click that button, and after a few seconds, that will be done.
+6:09
+If you're relatively new to Git and GitHub, it might be important to note at this point that you have only committed to your local Git repository, but you have not yet pushed anything up to your online GitHub account.
+6:21
+So that's what this publish repository button is for.
+6:24
+We'll go ahead and click this at this time.
+6:26
+We'll get a modal here.
+6:27
+It should already have a name filled out.
+6:30
+You don't necessarily need to change anything else unless you feel like adding a description or making this a private repository.
+6:37
+And you can click publish repository.
+6:39
+And once that is done, it will send us back here to the GitHub desktop dashboard.
+6:44
+At this point, you can click the button to view on GitHub, which will show you that your code is now live online.
+6:49
+The stock readme that we get from Scrimba is a little bit ugly, but that's okay for now.
+6:54
+Okay.
+6:54
+Now that our project is live up on GitHub, we are primed to go back to Netlify and sync up our repository with our Netlify account.
+7:02
+So back on Netlify, we are greeted with this dashboard page and we can click this button down here that says we want to import an existing project from git.
+7:11
+When you click that button, it will ask you to connect your git provider.
+7:15
+In our case, we're using GitHub, so I'll click the GitHub link which will send me to an OAuth page where I can authorize Netlify to access information on my GitHub page.
+7:25
+And when I do that, I'll have the ability to search through my entire list of repositories.
+7:30
+I've here searched for van dash life.
+7:32
+That pulled up my new van life repository.
+7:35
+So I'll select that repository.
+7:37
+Doing that, Netlify will try to figure out the best way that it can deploy this project, and it usually does a pretty good job.
+7:45
+So for me, I was able to keep all of the stock options here exactly the way that they were.
+7:50
+The most important thing is that we run npm run build as the build command and that the the publish directory is dist unless you have gone out of your way to change the Vite config settings or the package dot JSON so that this is different.
+8:03
+So this is what popped up for me.
+8:04
+I'm just going to keep it that way and hit deploy site.
+8:07
+Doing that sends me back to a dashboard page for this specific site, and we can see that it says it's building a new production build.
+8:15
+After a pretty short wait, we'll see that word building change to published.
+8:20
+And at this point, it's just chosen a random URL, which is going to be good enough for us for now, that we can click on and see our site live on the web.
+8:28
+Super cool.
+8:29
+Now, oops, it does look like we have a little bit of an issue.
+8:32
+Here on Scrimba, of course, we pretty much develop everything as a mobile style.
+8:36
+But even when I turn on the mobile view in my developer tools, we can see that the styles are not really looking like a mobile styled site.
+8:44
+To be honest, this is something I almost always forget to include when I'm spinning up a new project completely from scratch, and that is to include this line of code, which is a viewport meta tag.
+8:54
+So the reason I'm showing you this process is not because I actually forgot to do this, but because I want to show you how once you have deployed your site live, you can make changes and update the live version really, really easily.
+9:07
+This is where the benefits of having continuous deployment setup really shine.
+9:11
+Now if you are actually following along and you wanna add this line of code, you can actually click this screenshot.
+9:16
+It will take you to a page on MDN, which has a quick way to copy this line of code.
+9:21
+And you can paste it into your index HTML page right below the start of the head tag like I did here.
+9:26
+Now once I paste this in, we can go back to GitHub Desktop and see that it is tracking some changes.
+9:32
+Here I think my formatter might have changed the way that things were lining up, which is why it's showing a little bit more green than what we actually added.
+9:40
+And just like before, I can add a little summary up here.
+9:43
+If I want, I can also add a description and hit commit to main.
+9:46
+Again, this is only committing to my local repository and doesn't automatically make changes to my GitHub repository.
+9:53
+In order to do that, I do need to remember to push these changes, this commit, up to my origin, which is the repository that lives on GitHub.
+10:01
+And from GitHub Desktop, I can do that by just clicking push origin.
+10:05
+Then without doing anything else, I can go over to Netlify and see that it has noticed a new commit to my main branch on my GitHub repository.
+10:14
+And so it starts rebuilding my site, and after a few seconds again, it will have a new published site that includes my changes.
+10:22
+Awesome.
+10:23
+So, again, the process for updating the deployed site in just three easy steps.
+10:28
+One, we change our code.
+10:29
+Two, we commit and push those changes to GitHub.
+10:32
+Again, it's just two steps.
+10:34
+That's how simple it is.
+10:35
+Now that you have a live site that you could share with family and friends, I'd recommend jumping in both feet with the build in public mentality.
+10:43
+If you have a Twitter account, you can click this screenshot, which will pre populate a tweet that you could send out to the world and really show off the work that you're doing on your projects.
+10:52
+Of course, make sure to add your actual Netlify link here at the bottom.
+10:56
+One last important thing to mention is that even though you've downloaded your code to your local machine and pushed it up to GitHub, it will still be pretty important for you to follow here on Scrimba.
+11:05
+Scrimba isn't intended to be the ultimate place that your code lives.
+11:09
+You're not going to open Scrimba in order to write production level code, for example.
+11:13
+But for the sake of learning, Scrimba makes a lot of other things easier.
+11:16
+It lowers the barrier to get your hands on the keyboard and follow along.
+11:20
+So in the future when we talk about deployment again, we'll cover the steps on how to update the code that you just downloaded to your local machine so that you can deploy the most updated stuff.
+11:30
+But for the best learning experience, just remember to keep following the course here on Scrimba.
+11:34
+Okay.
+11:34
+That's everything we have to touch on right now for continuous deployment using Netlify, so let's keep pushing forward and building our van life app.
