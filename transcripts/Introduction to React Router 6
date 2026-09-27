@@ -1,0 +1,68 @@
+
+Transcript
+0:00
+Welcome to this course on React Router six.
+0:03
+I am so excited to guide you through one of the most popular and impact libraries that exists in the React ecosystem.
+0:11
+Now React router is a library used for enabling something called client side routing, and understanding what client side routing even means is just one of the many things that we're going to learn in this course.
+0:23
+From a really high level, we're going to be learning about the basics of using routes and routing.
+0:29
+We're going to learn about how to navigate between our routes.
+0:31
+We'll learn about layout and index routes, nested routes.
+0:35
+We'll dive pretty deep into learning about search params and how to filter results, and we'll be creating protected routes so that you can allow only authenticated users to visit certain parts of your page.
+0:46
+Along with those, there's a ton more that we're going to be learning, and of course, in the typical Scrimba fashion, we'll be doing tons of hands on practice.
+0:53
+In order to drive the curriculum forward, we're going to be building a really cool app called Vanlife, which is a way for people to rent out camper vans for their next road trip adventure.
+1:02
+This app will have over ten routes.
+1:04
+We'll be able to filter the vans by their type.
+1:07
+We'll learn about active nav link styling so we can very easily tell in the user interface where we are in the current app.
+1:14
+As I mentioned, we'll be including protected routes so that certain pages will only be accessible if you're logged in.
+1:20
+And we'll be hitting hard the concept of nested routes, because this app goes multiple levels deep into nested routes.
+1:26
+Then towards the end of the course we're going to be shifting focus briefly to learn about how we can migrate our fake data into a real database using Firebase.
+1:35
+And periodically throughout the course we're going to update a live version of our site by deploying it to Netlify.
+1:40
+Here on the scrim, I do have the final version of the code for the app that we'll be building, so you're welcome to poke around the app, get a feel for it.
+1:48
+You, of course, are also welcome to look around the code.
+1:50
+Don't let it be intimidating because jumping into a new codebase is always a bit intimidating.
+1:56
+Instead, be excited that you're going to be learning everything you see here.
+1:59
+Now this should be relatively self explanatory, but the things you should know before starting this course are, of course, React.
+2:05
+I would expect before you start this course that you have a pretty solid foundation in React.
+2:10
+If you are feeling rusty or you have not yet had a chance to really learn React, this course will not be a good starting point for that.
+2:17
+It will assume that you already have the basics in your tool belt.
+2:20
+So if you do need to spend some time learning React or just brushing up on certain topics, I have a free course here on Scrimba.
+2:27
+It's over twelve hours long.
+2:28
+It's got tons of practice, tons of projects, and is completely free.
+2:33
+You can click the screenshot here, which will take you to that course on Scrimba if you'd like.
+2:37
+My name is Bob Zeroll.
+2:38
+I'm going to be the course instructor for this entire course.
+2:41
+The most active place you can find me online these days is on Twitter.
+2:44
+You can click this little Twitter icon to go to my profile page on Twitter.
+2:49
+And without any further delay, let's jump in and start learning about React Router version six.
