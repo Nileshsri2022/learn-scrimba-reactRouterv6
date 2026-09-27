@@ -1,0 +1,28 @@
+
+Transcript
+0:00
+Before we get too far, I want to make sure that you are practicing some of this.
+0:03
+So you're basically starting from scratch.
+0:05
+I've actually removed the app component because in this case, we're not actually going to render anything to the page yet.
+0:11
+And I've already included the React router DOM dependency over here.
+0:15
+So all you need to do is to render our browser router with a routes component inside of it.
+0:20
+So pause here and work on this challenge.
+0:28
+Okay, first things first, let's make sure we import the browser router and the routes components from react router dom.
+0:38
+Again, the browser router is a context provider, so we are going to wrap everything that we have below in the browser router.
+0:46
+And for now we're just going to put one nested child component in there and that's going to be the routes component.
+0:52
+All of the rest of our work with React router is going to happen inside of this routes component.
+0:57
+Okay, hopefully everything has made sense so far.
+0:59
+We haven't gotten too deep yet.
+1:01
+So when you're comfortable with what we've done here, we'll move on next to creating our route definitions.
