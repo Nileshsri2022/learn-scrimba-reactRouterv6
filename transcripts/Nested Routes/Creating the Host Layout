@@ -1,0 +1,188 @@
+
+Transcript
+0:00
+Before we jump into this challenge, we are going to backtrack on what we did on the dashboard file really quick.
+0:06
+As you might remember, the dashboard itself is going to be the view that has sort of these summary stats, and we also want it to include the navigation bar.
+0:15
+But the navigation bar isn't really the dash stay.
+0:22
+We
+0:24
+want to switch stay.
+0:26
+We want to switch to those other routes.
+0:28
+Currently we set up our dashboard with this outlet so we're just going to undo the changes that we made there so that we are all set to start now on the challenge for this scrim.
+0:39
+So let me type that out.
+0:41
+Okay your challenge is to make the host layout component.
+0:45
+It's just going to have the navigation bar for the dashboard, the income, and the reviews like it mentions here.
+0:50
+And once you have created that host layout component, you'll need to replace the dashboard being rendered here for our host route.
+0:57
+As a caveat to this, it's going to make the dashboard disappear, but don't worry too much about that.
+1:02
+We're going to fix that in the next lesson.
+1:04
+So your navigation will include something called Board, but clicking it won't exactly show Dashboard goes here the way that you might think.
+1:11
+I've left out a couple of the steps that you'll need to take, so this is going to be a good challenge for you, and it will really test your knowledge and make sure that you've been following along with the challenges and understanding what we've been doing so far, especially regarding layout routes.
+1:24
+So now it's your turn.
+1:25
+Pause now and work on the challenge.
+1:33
+Okay let's go over to components.
+1:35
+I'm going to create my host layout in the components folder, not the pages folder.
+1:40
+Maybe there's an argument for doing it in the pages folder to me because first of all we have the layout component in the components folder.
+1:46
+It makes sense to put the host layout component there, but secondly this isn't really a full page per se, it's just this navigation bar that's going to be shared between the pages.
+1:55
+So let's go ahead and create a new component.
+1:57
+We'll call it host layout dot JSX, and we'll just kind of get it set up like normal.
+2:05
+For now we will just return an h one, just kind of do it one step at a time.
+2:11
+And we'll say host layout.
+2:13
+Then we need to make sure that we import that.
+2:15
+So let's import it at the top of this file.
+2:18
+Host layout that was kind of a cool shortcut I could do there and we'll replace the dashboard with host layout.
+2:26
+We're at the slash host route so going to that path should render the host layout.
+2:32
+And sure enough there we are.
+2:33
+Okay let's go to the host layout.
+2:35
+We know we need our navigation here.
+2:37
+And to navigate around we're going to use the link component from React Router DOM.
+2:44
+And let's use a nav element since this is a navigation on the site.
+2:50
+And we will create our links.
+2:52
+So this is going to go to slash host, nope not slash host, this has slash link.
+2:58
+There we go.
+2:59
+This will say dashboard.
+3:00
+Again this one's not going to be working the way that we think but we'll fix that soon.
+3:04
+Then we will create our other two.
+3:06
+We're going to have slash so just here let's see slash income slash reviews.
+3:12
+This will say income and this will say reviews.
+3:15
+As a quick aside for anybody who may be already familiar a little bit with React Router, you might be screaming at me that I don't need these absolute paths.
+3:24
+Even over here in our index we have some repetition happening with slash host slash host slash host.
+3:30
+So don't worry if you know that there's a better way.
+3:32
+I also know that there's a better way.
+3:33
+We're going to learn about that very soon.
+3:35
+If you have no idea what I'm talking about with relative paths or anything like that, don't worry about it.
+3:40
+We will talk about it.
+3:41
+Okay.
+3:41
+Let's go back to host layout and well let's go ahead and hit save.
+3:47
+Okay it's pretty ugly so I'm going to call on my magic snap.
+3:51
+And here we are, perfect.
+3:53
+It's a little basic but the styling is there.
+3:55
+So let's see if the functionality is there.
+3:58
+Now we already talked about this dashboard, well we're at the dashboard.
+4:02
+I'm clicking it, it's taking us to slash host but nothing else is showing up.
+4:05
+And well actually I'm getting ahead of myself.
+4:07
+These will take us to slash reviews and slash income, but the part that I kind of left out was the fact that we would need the outlet if we want to show any of the other parts of the page.
+4:17
+So that's the next thing we need.
+4:18
+Let's go ahead and import our outlet.
+4:21
+And I will need to turn this into something a little different.
+4:24
+So let's just wrap it in a fragment for now so that we can put more than one thing here.
+4:29
+And below our nav bar, we will render our outlet.
+4:32
+Hit save.
+4:32
+Okay awesome.
+4:33
+We were at the slash host slash income.
+4:35
+Income page goes here.
+4:36
+That's of course where we would design the actual income page.
+4:40
+Okay.
+4:41
+Let's try reviews.
+4:42
+Reviews page goes here.
+4:43
+Awesome.
+4:44
+Dashboard.
+4:44
+Uh-oh.
+4:45
+Nothing's there.
+4:46
+Let's go look at our index and I'm gonna clean up this challenge here.
+4:50
+I want you to look at this nested route setup and see if you can figure out why it is that when we go to slash dashboard our dashboard page is not actually showing up.
+4:59
+In fact, you can even pause here if you need a little extra time.
+5:05
+Well, one thing that might be obvious is that we are currently importing the dashboard, but we're not using it anywhere.
+5:11
+So the program has absolutely no idea that we want the dashboard to be a part of this app.
+5:16
+We had it right here with the host layout, but we needed to dedicate this parent route because the shared UI needs to be on the parent route to the host layout.
+5:26
+So our dashboard is gone.
+5:27
+Well there's one way to fix this, but it's going to highlight what I was kind of alluding to a moment ago where I was saying that we have this kind of crazy nested repetition happening and we're going to eventually use relative routes to kind of fix this.
+5:40
+So the workaround is I could just repeat another path and say this one is also slash host and the element should be dashboard.
+5:48
+I want to make it very clear that you would never see this in production React Router six code.
+5:53
+So I just want to make sure nobody takes this as their takeaway and decides this is how they want to do it.
+5:57
+So let's hit save.
+5:59
+Technically our dashboard is showing up.
+6:00
+React router is matching this route and it says the element is the host layout and then it looks at this child route and it says, well yeah I already matched it, but I guess I can display this element too in the parent's outlet.
+6:12
+So we have the host layout giving us this navigation bar and then the child route here displaying the dashboard as well.
+6:18
+So technically this is working, but that leads us perfectly into the next topic which is all about using relative routes.
+6:25
+So that's what we'll learn about next.
