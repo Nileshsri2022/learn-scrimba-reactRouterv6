@@ -1,0 +1,115 @@
+Transcript
+0:00
+The next component we'll talk about is the route component, which we also need to import from React Router DOM.
+0:06
+And this is really where the meat of what you'll be working on will happen.
+0:09
+It's within these route components.
+0:12
+The most basic way to use a route component is to render it as a self closing element here, and the route component can take a few different props.
+0:20
+The most common of which are the two that we're going to learn now, and that is path, which is where we specify what the path to this route should be.
+0:28
+Remember I mentioned that the home route is going to be called just slash.
+0:32
+Well, that's what we're talking about here.
+0:33
+We're talking about the route path.
+0:35
+If I wanted to create an about page, I would make this slash about or a contact page slash contact.
+0:42
+For now, let's create a home page.
+0:44
+And secondly, we need to tell it which React element we want to render if the path in the URL bar matches the path that is defined here on this route component.
+0:55
+Now you'll see that I put a set curly braces.
+0:57
+That's because inside the curly braces I need to render some kind of JSX.
+1:01
+In this case, we'll say when the home page is loaded, or rather when the path is just plain old slash, we want to render our app component that we have up here.
+1:11
+Now I haven't quite shown you this yet, but I want you to see if you can figure out what we need to put here.
+1:15
+I mentioned that we need to render our app component.
+1:18
+See if you can read between the lines and figure out what it is that's going to happen inside my curly braces here.
+1:24
+This is the kind of thing that's fun just to play around.
+1:26
+If it doesn't work, that's completely fine.
+1:28
+You're not breaking anything that can't be undone.
+1:30
+So notice that our mini browser is currently at slash.
+1:33
+See if you can make it so that when you fill in this element and then hit save that your hello react router h one will show up here on the page.
+1:41
+Pause now and see if you can get that to work.
+1:49
+One thing you may have tried was to pass a component as a function like this, and actually in past versions of React Router you actually could do something very similar to that.
+1:59
+However, I did mention that we need to render the app, so I'm going to surround it with the angle brackets like we see here.
+2:05
+Okay.
+2:05
+Let's hit save.
+2:07
+And there we go.
+2:08
+We are at the slash route and we're rendering the app component when we're at the slash route.
+2:13
+Out of curiosity, let's see what happens if I add slash about here and hit enter.
+2:18
+Okay.
+2:18
+It sends us to the slash about page, but there is no slash about path, and so nothing is showing up.
+2:24
+This seems like a great place for another challenge.
+2:28
+Okay.
+2:28
+Your task is to create an about component just right here underneath our app component, and it can render whatever you want.
+2:35
+I've mentioned an h one that says about page, but then I realized that's probably pretty boring.
+2:39
+So choose whatever you want to render there.
+2:41
+And then you need to create a new route so that it will render the about component when the path is slash about.
+2:47
+I've already put it here at slash about, so you will know that this worked when you hit save or refresh over here and your h one or whatever it is you render in your about component is rendered to the page.
+2:57
+Pause now and work on this challenge.
+3:05
+I'm feeling a little bit boring, so I'm not gonna be super creative.
+3:08
+And I'm just going to copy my app component, and we'll put this as an about component.
+3:13
+And we'll just say about page goes here.
+3:17
+Okay maybe we can make it a little more interesting.
+3:19
+We'll put a little tada symbol there.
+3:22
+Okay, now down here where my route definitions live I'm going to just copy my route.
+3:27
+This path will be slash about and the element will be the about component getting rendered.
+3:34
+I'm already at slash about.
+3:35
+Let's hit save.
+3:36
+And there we go, about page goes here.
+3:39
+And if I get rid of slash about in the mini browser URL bar and hit enter, it sends us back to the home page.
+3:45
+Or maybe more specifically the slash route.
+3:48
+Let's clean this up so we can see a little bit more.
+3:51
+Awesome work!
+3:52
+Now you might have noticed it's quite annoying to have to click up into the URL bar in the mini browser and type out slash about.
+4:00
+Usually that's not how navigating around the website's going to work.
+4:03
+So in the next lesson we're going to briefly cover another component from React Router DOM called Link that will help us navigate through our routes in a much easier way.
