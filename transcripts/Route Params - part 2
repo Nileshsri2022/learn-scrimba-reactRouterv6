@@ -1,0 +1,27 @@
+Transcript
+0:00
+The first part of this involves a challenge that you should already be able to complete without learning anything new.
+0:06
+Each one of our vans is listed in what we're calling a van tile here on this div, and we want to make it so that if the user clicks anywhere at all within the contents of this div that they'll be sent to the vans slash and then the ID of the van.
+0:21
+So your challenge is to wrap all of the contents of this div in a link from React Router DOM and have it send the user to that page.
+0:29
+You'll know that you've completed it when it sends them to that VAN detail page goes here page.
+0:35
+So pause now and work on this challenge.
+0:43
+Okay first we need to import link from react router dom
+0:50
+And then we will just wrap everything in a link.
+0:56
+We'll indent that and then the last thing is we need to send them to and I'm gonna use string interpolation here, so I can say slash vans slash, and then because we're inside of the loop where we're mapping over the vans, we have access to each individual van, and we'll say van dot ID.
+1:12
+Okay, let's hit save, click on reliable red, and of course it really doesn't matter, but we can see in the URL in the mini browser that it sent us to slash vans slash three because Reliable Red had an ID of three.
+1:24
+We can go back to beach bum, which should be two, and there it is.
+1:29
+Now of course this van detail page is not very descriptive, it's not really doing anything important.
+1:33
+Next we need to make it so that the detail page can grab information about that specific van that they clicked on so we can display everything we need to display here.
+1:41
+To do that we need to learn about something called use params, so that's what we'll learn next.
