@@ -1,0 +1,100 @@
+
+Transcript
+0:00
+I mentioned that React router enables us to do something called client side routing.
+0:05
+However, that might not make a whole lot of sense on its face if you're not familiar with the history of multi page applications versus single page applications.
+0:14
+So let's spend a second talking about the difference between these two.
+0:17
+In a more traditional website, you have multi page applications or MPAs.
+0:21
+On the left side of this diagram, we have a client.
+0:24
+It's showing a computer, but more accurately, the client is really the browser in our case.
+0:29
+And on the right side, we have a server, which really is just a computer that lives off-site usually somewhere else.
+0:35
+So when you go to your browser and you navigate to a website, let's say my site dot com, a simplified version of what happens is a request is made to the server that's associated with the domain of mysite dot com, and it's requesting the HTML page that is needed to display the web page.
+0:52
+At that point, the server will do some processing.
+0:55
+It will grab the HTML page, but it also might be evaluating some CSS or some JavaScript.
+1:01
+It could potentially be reaching out to a database or making API calls to other servers.
+1:07
+In the end, with the ultimate goal of putting together a completed home page to send back to the browser in the form of an HTML file.
+1:14
+That HTML file is then sent back as a response from the server to your browser, and your browser then loads that page for you to view.
+1:22
+So then once you're looking at that home page, you might go ahead and click on the about page.
+1:27
+The URL for this would be my site dot com slash about, which would then perform another request to the server.
+1:33
+The server, again, would go through similar processes where it would be searching for the about page to then deliver up to the browser.
+1:41
+Your browser would then replace the old home page with the new about page.
+1:45
+From the browser's point of view, it might look something more or less like this, not including this actual animation.
+1:50
+When you're on the home page, you can see all of the home page content including a header, let's say, and a footer.
+1:56
+And when you click on the about page, the entirety of that page is discarded and replaced with the entirety of the new page.
+2:03
+Of course, it's usually not a sliding motion like this.
+2:06
+Instead, it will appear more like a flicker.
+2:08
+And that telltale flicker is a good way to know that you are currently looking at a multi page application.
+2:14
+So how does a single page application differ?
+2:17
+Well, don't be confused by the name single page application.
+2:20
+It doesn't actually mean you can only have one page on your website, but instead it means that your browser is only loading single web document one time, and then your app will make incremental updates to that existing document through different methods like internal React state changes or fetch requests to an API.
+2:39
+It all starts in a very similar fashion.
+2:41
+In your browser, you navigate to mysite dot com.
+2:43
+That makes a request to the server.
+2:46
+The server will then process a few things, but this time instead of its job being to process and build an HTML file, it's going to send back an entire React application.
+2:57
+So that application is sent back to the browser, it's loaded into the browser, and when new requests like going to the about page are made, oftentimes portions of that new page are able to load directly inside of the React app without any new requests being made out to the server.
+3:13
+That said, the about page might still need some extra information or data from a server or an API.
+3:19
+And so a request could still be made out to a server, at which point it would do its job.
+3:24
+And this time instead of sending a new page back, because remember that view already exists inside of the React app itself, it's likely only going to be handling sending back something like JSON data.
+3:36
+That JSON data gets sent back to your React app, which then loads into the React app, gets consumed by it, and changes whatever view you're looking at to include the new JSON data that you just loaded from the server.
+3:47
+All that said, on the client side, the real difference that you'll see is there won't be the same flicker of the entire page when you're going from one page to the next.
+3:55
+Because remember, we're not reloading the entire document.
+3:58
+It's just one document, one page.
+4:00
+But the content on that page might change.
+4:03
+In essence, what that does is it might swap out the home page content for the about page content.
+4:09
+Because the React app was loaded on the initial render of your website, it already knew what content the about page was going to contain and it may or may not have had to reach out to a server to get some additional data.
+4:22
+In fact, in our van life app, we're going to see this where we can transition to the about page without any delay, without any of that flicker that happens with the multi page application.
+4:31
+And the about page doesn't request any additional resources or JSON data from the server.
+4:37
+Instead, it's already loaded on the initial render of our site.
+4:40
+However, when we go to the vans list page, the beginnings of that page will load in sort of a skeleton UI, you could say, While in the background, a request is being made to the server to ask for the specific data about the vans that we need to list.
+4:55
+Then once that data comes in, it will update the page to display the vans.
+4:59
+This will make a bunch more sense once we actually start developing it.
+5:02
+So that's a very high level overview of what will be happening as we're building a single page application using React router.
+5:09
+Now it's time for us to actually dive in and start learning the code.
