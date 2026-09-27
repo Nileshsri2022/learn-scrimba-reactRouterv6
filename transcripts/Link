@@ -1,0 +1,76 @@
+
+Transcript
+0:00
+Like I mentioned it's a bit annoying to have to go up to our menu bar just to change which route we're in.
+0:05
+So if I want to go back to the home page I have to hit slash and then if I want to go back to the about page I have to type in slash about.
+0:14
+We also can see that when I do that the page is actually blinking, which means it's refreshing.
+0:19
+It's doing a complete full page refresh.
+0:21
+It's not that big of a deal when you only consider about the blink, but if you have any kind of state living in your app that needs to be passed to the about page or well really any state at all, doing that page refresh is going to completely wipe out any state that you were maintaining.
+0:36
+If you really think about it, a React app is a little bit delicate when it comes to state because if that page refresh happens, then all your state just completely disappears.
+0:44
+Unless you're saving it in local storage or something like that, it will just completely reset.
+0:49
+Now the way to solve this problem in HTML is to have an anchor tag.
+0:53
+The problem with an anchor tag is when you click it, it will do another page refresh.
+0:58
+So we need some way to navigate between our different routes within the ecosystem of React Router DOM.
+1:05
+Unfortunately, they give us a component to do that and it's called link.
+1:09
+So I'm going to import the link component, capital L link, and if you actually look at your dev tools when you render a link it's just rendering an anchor tag but it's intercepting the path that the anchor is sending you to and making sure it doesn't do that page refresh so you can maintain your state.
+1:25
+Now this isn't the real way that you would do this but to avoid having to put links in both the home and about pages, I'm just going to stick a link element right here.
+1:34
+And the way that link works is very similar to an anchor tag, so it will have an opening and a closing portion to it.
+1:41
+Whatever you put inside is what will be the text that shows up on the page.
+1:45
+But instead of an href property, a link takes a to property.
+1:50
+And this is actually kind of nice because it reads like English.
+1:52
+This is a link to the following route.
+1:55
+And so I'll say equals slash to go to home.
+1:58
+We'll duplicate that and we'll say it goes to slash about to go to the about route.
+2:03
+Again, you aren't going to usually stick your links just inside your browser router like this.
+2:07
+We're going to see a more robust way to have this navigation element that will appear on every page later.
+2:13
+But let me hit save.
+2:14
+It's going to be poorly styled, it's just kind of shoved together because they're inline elements.
+2:19
+But when I click the home button, it takes me to the slash route and when I click about, it takes me to the about route.
+2:25
+And if you look closely you'll see that there's no page refresh happening between the two.
+2:29
+If I were to create some state in my app and pass that as props to my home and about components, whatever state I created, even if I decided to change it, maybe like a counter that I had a button that said increment and it counted up to ten, when I go back and forth between the about page and the home page, both of those will still have that state of ten as opposed to using an an anchor tag or typing into the URL bar because that would refresh the page and refresh my counter state back to zero.
+2:56
+Because it would take a bit of code I'm not going to bother actually showing that example.
+3:00
+Hopefully it makes sense.
+3:00
+If not, that's okay.
+3:01
+The main thing to take away is that if you want to link from one place to another or navigate from one place to another inside your React app using React router, you have to use the link element.
+3:12
+Now if I want to style these links I could either give each one of them a class name and select that class name in my CSS or if I need to use the element selector then I can go into my CSS.
+3:24
+I can say select my nav or maybe if I had some kind of class on my nav then I would put it there.
+3:29
+But to select the element of the link, remember it's rendering an anchor tag, so I need to select the anchor.
+3:35
+So maybe I don't like the underline, we would say text decoration none, and there goes the underline.
+3:41
+We are going to be revisiting the links a little bit later in this section but for now this is good enough for us to more easily navigate around our app without having to type into the navigation bar or use these little back buttons and lose our state in the meantime.
+3:55
+As always feel free to play around with everything we've learned here and when you're ready we'll move forward.
