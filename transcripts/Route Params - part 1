@@ -1,0 +1,90 @@
+
+Transcript
+0:00
+Everything we've learned so far about React Router you could say is like the meat of React Router, but with the browser router, the routes, these individual routes that we have, and the link that allows you to navigate between one and the other.
+0:13
+Everything else that we'll learn is sort of the, I guess you could call it the vegetables of this plate.
+0:18
+They're really going to round out our experience and they're going to allow us to do some pretty cool things with React Router.
+0:24
+We'll spend the next couple lessons learning about nested routes, but to do that we're going to first see maybe the harder way to do this.
+0:31
+So in order for us to understand nested routes, we're first going to learn about parameters or route params.
+0:37
+Now we know that we have our van list page here and the list page is showing us all of our vans.
+0:43
+We want to be able to click on one of them and be navigated to a detail page for the specific van that we clicked on.
+0:49
+You can see in the design here, we have the list page.
+0:52
+Clicking on one of them sends us to the detail page.
+0:55
+And in our case, we decided we want this detail page to have a route of slash vans slash and then the ID number of the van.
+1:02
+But we don't want to go through and create a new route for every one of the vans in our data and have something like slash vans slash and then slash one slash two slash three slash four.
+1:14
+We wouldn't want to manually create that because, well, it's just not maintainable.
+1:18
+If we were to add more vans to our list then we wouldn't also want to have to come in here and create new routes, create separate elements and so forth.
+1:26
+So this is where route params come in.
+1:28
+When we're defining our routes let me get rid of all these extra ones.
+1:32
+When we're defining our routes, I'm going to copy this one just as a starting point.
+1:36
+And then instead of saying slash vans slash and then a specific dedicated ID number or some other kind of text, we're going to use a colon and then we're going to give it sort of a variable name.
+1:49
+In this case, let's call it ID.
+1:50
+We get to choose whatever we want, but let's call it ID because we will put the ID of the van in this spot.
+1:56
+Because the colon sort of turns this into a variable, it means that we can reuse this one route definition for every detail page that we want to create, no matter what the ID is going to be.
+2:08
+Now we need to change vans because this right now is just leading us to the same vans list page.
+2:14
+So instead, we're going to create a van detail page.
+2:17
+So I'll whip that together really fast.
+2:18
+We'll go to pages, create a new file, call it van detail dot JSX, and I'll just set this up really quick.
+2:27
+Okay like we did before just an h one that says the van detail page goes here.
+2:32
+We will go back to our index page, import it, and instead of rendering the vans here we will render van detail.
+2:41
+And we don't have a link yet to send us there so let me hit refresh.
+2:45
+And I'll just start by typing in in the URL slash one and hit enter.
+2:49
+And cool.
+2:50
+That sent us to the VAN detail page.
+2:52
+Now we'll notice that this doesn't say anything about one.
+2:55
+It just says colon ID.
+2:57
+So I could change this to slash forty two even though we don't really have a van with an ID of forty two.
+3:03
+I could change this to whatever I want and hit enter and it really doesn't care.
+3:10
+The colon is just saying there's going to be something here.
+3:13
+I don't know what it is but it's going to be something.
+3:16
+So there's two more things that we need to hook together in order for this to work.
+3:20
+The first is from my vans page I want to have each of these vans send the user when it gets clicked to slash vans slash and then the ID of that specific van.
+3:31
+And then in the van detail page, we want some way that we can access the ID that is in the URL after slash vans.
+3:39
+And that way from the van detail page we can grab whatever the ID is from the URL, make a get request to our server to grab the detailed information for that one specific van, and then go through the process of displaying the detailed information for that one specific van like you see here.
+3:55
+Really, I think the only information missing from the list page is this description down here.
+4:00
+But still for now what we'll do is a whole extra get request to get the detailed information for this VAM.
+4:06
+So for the sake of breaking this up a little bit, let's tackle those two different parts in separate scrims.
+4:11
+So that's what we'll start with next.
