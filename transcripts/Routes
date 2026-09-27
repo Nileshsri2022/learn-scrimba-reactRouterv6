@@ -1,0 +1,60 @@
+
+Transcript
+0:00
+We mentioned BrowserRouter is a context provider, and it provides context to all of its children components very similar to what we were doing in our reusability section.
+0:09
+So BrowserRouter is the provider, we need to set up a way to define the routes that we want in our application.
+0:16
+We're going to start with a really simple home route and an about route, and there's two components I need to pull in in order to start setting that up.
+0:24
+The first one is one called routes.
+0:27
+The routes component goes as the first child inside the browser router.
+0:31
+So I'll set up routes here.
+0:34
+And I think to avoid confusion I'm actually going to stop rendering our app component.
+0:38
+So we just have the browser router and this empty routes element.
+0:42
+Notice here it has a separate closing tag and that's because inside of routes we'll need to go a series of new components that is just called route.
+0:52
+Now just in case you don't know, a route is just part of your URL that specifies where on your website you are.
+0:59
+So let's say you have a website like example dot com.
+1:03
+Example dot com would be your homepage and oftentimes it has a trailing slash.
+1:07
+So that route might just be called the slash route.
+1:10
+But if you wanted to create an About page on example dot com, you would maybe have a route called slash about.
+1:17
+And then this part of your URL is the route for your site.
+1:21
+Maybe you have a contact page, that would be slash contact, Or maybe you have a blog page slash blog.
+1:26
+Now routes can be nested, and we're going to cover nested routes later, but if you had a blog you might want to specify that you have another route as part of this URL that leads you to blog article one.
+1:38
+You hopefully have more interesting titles than that.
+1:41
+Oftentimes blogs will use the title of the blog as this part of the URL, although you might see sometimes it's just an ID number where it specifies for the database under the hood which blog ID number it should be looking for.
+1:55
+Currently over here in the mini browser you can see that it says slash index dot HTML.
+1:59
+And when we're just serving up a single HTML file, that might be true.
+2:03
+But once we set up our routes, we're going to just see the route portion of our mini browser.
+2:07
+It's not gonna say something like example dot com.
+2:10
+It's just going to say slash or in our case slash about.
+2:14
+It'll also say, in the app we're building it'll be slash vans, it'll be a vans route, and then we're also going to have vans slash and then some ID number for the van.
+2:24
+Okay, we're getting a little ahead of ourselves.
+2:25
+We don't have any routes to find.
+2:27
+So now we have a place to put our routes, we need to start using this route component to actually define our routes.
+2:33
+And actually we've covered enough material, I want to get your hands on the keyboard, so we're gonna have a quick challenge before we move on.
